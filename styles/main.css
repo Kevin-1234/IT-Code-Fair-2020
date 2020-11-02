@@ -8,16 +8,11 @@
 
 /*colours*/
   :root {
-    
-      
+ 
     font-family: 'Roboto', sans-serif;
     font-size: 16px;  
   }
 
-  .body{
-
-    background-color: rgb(4, 42, 85);
-  }
   /*the arrow to get back to the previous page*/
   .back-arrow {
     position: absolute;
@@ -82,12 +77,17 @@
 
   /*Components*/
   .home {
+    background-color: rgb(4, 42, 85);
     height: auto;
     height: 100%;
     opacity: 1;
     position: absolute;
     top:0;
     
+  }
+  .home form{
+
+    background-color: #fdfdfd;
   }
 
   .searchResults {

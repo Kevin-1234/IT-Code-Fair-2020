@@ -8,13 +8,16 @@
 
 /*colours*/
   :root {
-    --primary: #E5E5E5;
-    --secondary: #FFE1C4;   
+    
+      
     font-family: 'Roboto', sans-serif;
     font-size: 16px;  
   }
 
-  
+  .body{
+
+    background-color: rgb(4, 42, 85);
+  }
   /*the arrow to get back to the previous page*/
   .back-arrow {
     position: absolute;

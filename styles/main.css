@@ -23,7 +23,7 @@
 
 
   .header {
-    position: sticky;
+    position: fixed;
     width: 100%;
     top:-65px;
     z-index: 2;
@@ -40,7 +40,6 @@
 
   .header h6{
     padding-bottom: 10px;
-    
 
   }
 

@@ -74,7 +74,8 @@
   }
 
   
-  .body{
+  body{
+    
     background-color: rgb(4, 42, 85);
   }
   /*Components*/
@@ -84,7 +85,7 @@
     height: 100%;
     opacity: 1;
     position: absolute;
-    top:0;
+    top:0px;
     
   }
   .home form{

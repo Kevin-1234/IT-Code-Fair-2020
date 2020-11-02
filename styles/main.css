@@ -23,13 +23,13 @@
 
 
   .header {
-    position: fixed;
+    position: absolute;
     width: 100%;
     top:-65px;
     z-index: 2;
     height: 126px;
     color: azure;
-    background-color: rgb(4, 42, 85);
+    background-color: rgb(14, 148, 201);
     display: flex;
     
     align-items: flex-end;

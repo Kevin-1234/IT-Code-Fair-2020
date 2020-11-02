@@ -24,9 +24,10 @@
 
   .header {
     position: sticky;
-    top:-40px;
+    
+    top:-55px;
     z-index: 2;
-    height: 128px;
+    height: 78px;
     color: azure;
     background-color: rgb(4, 42, 85);
     
@@ -76,7 +77,7 @@
   
   body{
     
-    background-color: rgb(4, 42, 85);
+    
   }
 
   .warpper{

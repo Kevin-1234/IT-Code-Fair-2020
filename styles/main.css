@@ -10,16 +10,18 @@
     font-size: 16px;  
   }
 
-
+  body{
+    background-color: rgb(4, 42, 85);
+  }
 
   .header {
-    position: absolute;
+    position: sticky;
     width: 100%;
     top:-65px;
     z-index: 2;
     height: 126px;
     color: azure;
-    background-color: rgb(14, 148, 201);
+    background-color: rgb(4, 42, 85);
     display: flex;
     align-items: flex-end;
     justify-content: center;

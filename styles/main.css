@@ -10,9 +10,9 @@
     font-size: 16px;  
   }
 
-  /* body{
+  body{
     background-color: rgb(4, 42, 85);
-  } */
+  } 
 
   .warpper{
     height: 1000px; 
@@ -25,9 +25,9 @@
   .header {
     position: sticky;
     width: 100%;
-    top:-65px;
+    top:-28px;
     z-index: 2;
-    height: 126px;
+    height: 78px;
     color: azure;
     background-color: rgb(4, 42, 85);
     display: flex;
@@ -79,7 +79,7 @@
     height: auto;
     opacity: 1;
     position: absolute;
-    top:0;
+    top:100px;
     
     width: 100%;
   }

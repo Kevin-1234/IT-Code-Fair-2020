@@ -42,8 +42,15 @@
     padding-bottom: 10px;
 
   }
+  .header .backWard{
 
+    align-self: center;
+    position: fixed;
+    left: 25px;
+    z-index: 2;
 
+  }
+  
   .selectedCriterias{
     margin-left: 5%;
     margin-right: 5%;

@@ -1,7 +1,7 @@
 
 //get the device window size to decide the distance to move for each component
 var windowWidth = $(window).width();
-
+var screenTrack = "";
 // initialize materialize form and collapasible card
 $(document).ready(function(){
   $('select').formSelect();
@@ -12,6 +12,8 @@ $(document).ready(function(){
 $(".home").animate({left: '0px'});
 $(".searchResults").animate({left: windowWidth});
 
+screenTrack = "home";
+$('.header').append(`<h6 class="title">Select Area</h6>`)
 // show different set of skills based on the discipline selected
 $('select').on('change', function (e) {
     $('.skills').empty();
@@ -154,7 +156,9 @@ $('select').on('change', function (e) {
 // when click search button
 $('#searchBtn').click((evt) => {
   evt.preventDefault();
-  
+  screenTrack = "Search Result";
+  $('h6').remove(".title");
+  $('.header').append(`<h6 class="title">Search Results</h6>`);
   var area = $('select').val();
   var skills = $('input[name="skills"]:checked');
   var nTWW = $('input[name="NTWW"]:checked').val();
@@ -327,11 +331,17 @@ $('#searchBtn').click((evt) => {
     
     $(".home").animate({left: 0 - windowWidth}, 800);
     $(".searchResults").show();
-    //$(".searchResults").css("display","block");
     $(".searchResults").animate({left: 0}, 500);
     $(".home").hide();
+    $(".searchForm")[0].reset();
   });
   
-}
+});
 
-);
+$(".backWard").click((evt) => {
+  evt.preventDefault();
+  $(".home").animate({left: 0}, 500);
+  $(".searchResults").hide();
+  $(".searchResults").animate({left: windowWidth}, 800);
+  $(".home").show();
+});

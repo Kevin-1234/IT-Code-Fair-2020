@@ -25,7 +25,7 @@
   .header {
     position: sticky;
     top:0;
-    
+    z-index: 2;
     height: 48px;
     color: azure;
     background-color: rgb(4, 42, 85);
@@ -78,19 +78,23 @@
     
     background-color: rgb(4, 42, 85);
   }
+
+  .warpper{
+    height: 1000px; 
+    background-color:  #fdfdfd;
+  }
   /*Components*/
   .home {
-    background-color: rgb(4, 42, 85);
+    background-color:  #fdfdfd;
     height: auto;
-    height: 100%;
     opacity: 1;
     position: absolute;
     top:0px;
     
   }
   .home form{
-
-    background-color: #fdfdfd;
+    height: auto;
+    
   }
 
   .searchResults {

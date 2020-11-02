@@ -25,9 +25,9 @@
   .header {
     position: fixed;
     width: 100%;
-    top:-35px;
+    top:-65px;
     z-index: 2;
-    height: 86px;
+    height: 126px;
     color: azure;
     background-color: rgb(4, 42, 85);
     display: flex;

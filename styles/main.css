@@ -24,9 +24,9 @@
 
   .header {
     position: sticky;
-    top:0;
+    top:-40px;
     z-index: 2;
-    height: 48px;
+    height: 128px;
     color: azure;
     background-color: rgb(4, 42, 85);
     
@@ -90,8 +90,8 @@
     opacity: 1;
     position: absolute;
     top:0;
-    overflow: hidden;
     
+    width: 100%;
   }
   .home form{
     height: auto;

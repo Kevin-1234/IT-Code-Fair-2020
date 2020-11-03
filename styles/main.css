@@ -26,9 +26,9 @@
   .header {
     position: sticky;
     width: 100%;
-    top:-45px;
+    top:-50px;
     z-index: 2;
-    height: 88px;
+    height: 92px;
     color: azure;
     background-color:  rgb(4, 42, 85);
     display: flex;
@@ -40,7 +40,7 @@
     flex-grow: 1;
     position: relative;
     left: -12.5px;
-    padding-bottom: 2px;
+    padding-bottom: 3px;
   }
   .header .backWard{
     
@@ -49,7 +49,7 @@
     left: 25px;
     z-index: 2;
     flex-grow: 1;
-    padding-bottom: 8.5px;
+    padding-bottom: 9.5px;
   }
   
   .selectedCriterias{

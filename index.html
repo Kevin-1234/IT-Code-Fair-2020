@@ -28,12 +28,15 @@
     <link href="splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
     <link href="splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
     <link href="splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  
+  <style id="matchRateKeyFrames"></style>
+  
   </head>
 
   <body>
 
     
-    <div class="warpper">
+   
       <!-- Home component -->
       <div class="home">
         <div class="header">
@@ -41,6 +44,30 @@
             arrow_back_ios
             </span> 
         </div>
+        
+    
+          <!-- <div class="gauge-container"> -->
+          <!-- <svg  height="50" width="50">
+            <circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="red" />
+            <text x="40%" y="70%" text-anchor="middle" style="font-size: 28px;">0</text>
+            <text x="70%" y="70%" text-anchor="middle" style="font-size: 14px;">%</text>
+          </svg>  -->
+          <!-- <span class="center percentage">
+            <span class="value">0</span>
+            <span class="percentSymbol">%</span>
+          </span> -->
+        <!-- </div> -->
+
+        <!-- <svg viewBox="0 0 500 500">
+          <g id="UrTavla">
+            <circle style="fill:url(#toning);stroke:#010101;stroke-width:1.6871;stroke-miterlimit:10;" cx="250" cy="250" r="245">
+            </circle>
+            <text x="50%" y="50%" text-anchor="middle" stroke="#51c5cf" stroke-width="2px" dy=" 48px" style="font-size: 48px;">0</text>
+            <text x="55%" y="50%" text-anchor="middle" style="font-size: 28px;">%</text>
+          </g>
+        </svg> -->
+
+
         <form class="searchForm">
 
           <div class="container">
@@ -197,12 +224,51 @@
       </div>
 
       <!-- search results display area-->
-      <div class="searchResults">  
+      <div class="searchResults"> 
+        
+        <div class="header">
+          <span class="material-icons backWard">
+            arrow_back_ios
+            </span> 
+        </div> 
         <div class="selectedCriterias">
           <p>Selected Criterias</p>
         </div>
         <div class="resultsContainer">
+          
           <ul class="collapsible popout resultsList">
+            <!-- <li>
+              <div class="collapsible-header" >
+                <img src="https://i.pravatar.cc/72?img=10" alt="" class="circle">
+                <div class="valign-wrapper">Test name</div> 
+                <div class="bestMatchContainer">
+                  <div class="material-icons star">military_tech</div>
+                  <div class="bestMatch">Best Match</div>
+                </div>
+                <div class="gauge-container">
+                  <svg class="gauge" viewBox="0 0 150 150">
+                    <circle transform="rotate(-90 75 75)"  class="progress" r="65"  cx="75" cy="75" pathLength="1000" ></circle>
+                  </svg>
+                  <span class="center percentage">
+                    <span class="value">0</span>
+                    <span class="percentSymbol">%</span>
+                  </span>
+                </div>        
+              </div>
+            <div class="collapsible-body" style="padding:12px;">
+              
+              <div class="individualTags">
+                <P>Matched Criterias: </P>
+              </div>
+              <p>Email: </p>
+              <p>Phone: </p>
+              
+              <div style="margin-top:20px;">
+              <a class="waves-effect waves-light btn-small">More Info</a>
+              <a class="waves-effect waves-light btn-small">Save</a>
+              </div>
+            </div>
+          </li> -->
           </ul>
         </div>
       </div>
@@ -212,6 +278,7 @@
 
     <!-- <script src="scripts/app.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src='http://code.jquery.com/jquery-3.3.1.slim.min.js'></script> -->
     <script src="scripts/vendor/materialize.min.js"></script>
     <script src="scripts/main.js"></script>
   </body>

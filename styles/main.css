@@ -11,17 +11,74 @@
     font-size: 16px;  
   }
 
+  /* *,*::before, *::after{
+    box-sizing: border-box;
+  } */
+
+
+  
+
+  /* animation: dash 5s linear forwards; */
+  /* .progress{
+    fill: rgb(255, 60, 0);
+    stroke: rgb(250, 121, 0);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation-fill-mode: forwards;
+    animation: pulse 5s linear;
+    stroke-width:18;
+  } */
+    /* @keyframes pulse {
+    0% {
+
+      fill: rgba(250, 0, 0, 0.7);
+      stroke: rgb(250, 0, 0);
+    }
+    100% {
+      fill: rgba(250, 121, 0, 0.7);
+      stroke: rgb(250, 121, 0);
+  }
+
+}   */
+
+
+/* .gauge-container{
+  display: inline-block;
+  position:relative;
+  width: 50px;
+  height: 50px;
+}
+
+.gauge-container .gauge{
+  position: relative;
+  display: block;
+}
+
+.gauge-container .center{
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-weight: 900;
+  color: rgb(27, 31, 31);
+
+}
+
+.gauge-container .center .value{
+  font-size: 13px;
+}
+
+.gauge-container .center .percentSymbol{
+  font-size: 8px;
+} */
+
+
   body{
-    background-color: rgb(4, 42, 85);
-    
+    background-color: rgb(4, 42, 85); 
   } 
 
-  .warpper{
-    
-    background-color:  #fdfdfd;
-    
-    
-  }
+ 
 
   .header {
     position: sticky;
@@ -68,18 +125,71 @@
 
 }
 
-
-
-.active .collapsible-body{
-  
-  padding:12px;
+/* .collapsible-header{
+  height:52px; 
+  align-items:center;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 900;
+}
+.collapsible-header .bestMatchContainer{
+ 
+ height: 52px;
 }
 
+.bestMatch{
+  font-size: 0px;
+  font-weight: 900;
+  display: block;
+  position: relative;
+  top:20px;
+  opacity: 0;
+} 
+.star{
+  opacity: 0;
+  font-size: 0px;
+  font-weight: 900;
+  color: rgb(255, 153, 0);
+  position: relative;
+  top:40px;
+  left: 30%;
+  
+} */
+
+/* @keyframes showStar {
+  0% {
+
+    font-size: 0px;
+    
+  }
+  100% {
+    font-size: 18px;
+}
+
+} */
+
+/* .collapsible-header img{
+
+  height:42px; 
+  width: 42px;
+  
+} */
+
+.active .collapsible-body{
+  font-size: 14px;
+  padding:16px;
+  font-weight: 900;
+}
+
+.active .collapsible-body .personalInfo{
+
+  margin-top: 20px;
+}
 .collapsible-body p{
 
   margin:0;
 }
-
 
  
   /*Components*/

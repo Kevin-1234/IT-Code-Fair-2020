@@ -178,7 +178,13 @@ $('#searchBtn').click((evt) => {
     var availabilityFilteredData = [];
     // keep all the selected creterias
     var tags = [];
+    // stores each person's match rate for sorting
+    var matchRates = [];
+    // match rates and individule tages with indexes
+    var mRsAndITagsWithIndexes = [];
     
+
+
     // find people with selected area
     areaFilteredData = data.filter(person => person.area === area.toLowerCase());
     tags.push(area);
@@ -262,21 +268,23 @@ $('#searchBtn').click((evt) => {
     // append selected creterias
     for(let i=0; i<tags.length; i++){
       $('.selectedCriterias').append(
-        `<div class="chip">
+        `<div class="chip" style="font-weight: bolder;">
           ${tags[i]}
         </div>`);
     }
 
-    
 
     for(let i=0; i<availabilityFilteredData.length; i++){
-      let personName = availabilityFilteredData[i].name;
-      let image = availabilityFilteredData[i].image;
-      let phone = availabilityFilteredData[i].phone;
-      let email = availabilityFilteredData[i].email;
+      
       let individualTages = [];
       let matchRate = 0;
-      
+      let mRsAndITagsWithIndex={
+        matchRate: 0, 
+        index:0,
+        individualTages:[],
+
+      }
+        
       //save matched tags of each individual
       tags.forEach(tag => {
         if (availabilityFilteredData[i].area === tag){
@@ -295,39 +303,156 @@ $('#searchBtn').click((evt) => {
 
       })
       
+      //calculate the match rate of each individule
       matchRate = Math.floor((individualTages.length / tags.length) * 100);
-      console.log("individualTages: " + individualTages.length);
-      console.log();
-      console.log("individualTages: " + individualTages);
+      //keep the individual tags and match rate of each individule with this person's index in the filtered data
+      mRsAndITagsWithIndex.matchRate = matchRate;
+      mRsAndITagsWithIndex.index = i;
+      mRsAndITagsWithIndex.individualTages = individualTages;
+      mRsAndITagsWithIndexes.push(mRsAndITagsWithIndex);
+    }
 
-      // append items to the result list
-      $('.resultsList').append(`<li>
-      <div class="collapsible-header row" style='height:58px; align-items:center;'>
-      <img src=${image} alt="" style='height:48px; width: 68px;'class="circle col s3 pull-s2">
-      <div class="col s5 pull-s3 valign-wrapper">${personName}</div>         
-    </div>
-    <div class="collapsible-body" style="padding:12px;">
-      <P>Match Rate: ${matchRate + "%"}</P>
-      <div class="individualTags${i}"></div>
-      <p>Email: ${email}</p>
-      <p>Phone: ${phone}</p>
+    console.log("mRsAndITagsWithIndexes: " + mRsAndITagsWithIndexes);
+    console.log("mRsAndITagsWithIndexes: " + mRsAndITagsWithIndexes[0].matchRate);
+    mRsAndITagsWithIndexes.forEach(element => matchRates.push(element.matchRate));
+
+
+    // var largestMatchRates = [];
+    // largestMatchRates = matchRates.forEach(rate => {
+    //   if(rate === Math.max(matchRates)){
+    //     largestMatchRates.push
+    //   }
+    // }
+    //sort match rates from the lowest to the largest
+    var sortedMatchRates = matchRates.sort((a,b) => {
+      return a - b;
+    });
+    
+    // generate a card for each person based on the match rate from high to low
+    for (let i=sortedMatchRates.length; i >= 0; i--){
+          let personName = '';
+          let image = '';
+          let phone = '';
+          let email = '';
+          let personIndex = -1;
+          let individualTages = [];
+          let matchRate = 0;
+
+      for(let x=0;x< mRsAndITagsWithIndexes.length;x++){
+        if (mRsAndITagsWithIndexes[x].matchRate === sortedMatchRates[i]){
+          console.log("object.matchRate:" + mRsAndITagsWithIndexes[x].matchRate);
+          console.log("sortedMatchRates[i]:" + sortedMatchRates[i]);
+         personName = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].name;
+         image = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].image;
+         phone = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].phone;
+         email = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].email;
+         individualTages = mRsAndITagsWithIndexes[x].individualTages;
+         matchRate = mRsAndITagsWithIndexes[x].matchRate;
+         personIndex = mRsAndITagsWithIndexes[x].index;
+         mRsAndITagsWithIndexes.splice(x,1);
+         break;
+      }
+      }
       
-      <div style="margin-top:20px;">
-      <a class="waves-effect waves-light btn-small">More Info</a>
-      <a class="waves-effect waves-light btn-small">Save</a>
+        if(personIndex !== -1){
+          console.log("personIndex is not -1");
+        // append items to the result list
+        $('.resultsList').append(`<li>
+        <div class="collapsible-header" style="height:52px; 
+        align-items:center;
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 900;">
+          <img src=${image} alt="" class="circle" style="height:42px; width: 42px;">
+          <div class="valign-wrapper">${personName}</div> 
+          <div class="bestMatchContainer" style="height: 52px;">
+      
+            <div class="material-icons star${personIndex}" style="opacity: 0;
+            font-size: 0px;
+            font-weight: 900;
+            color: rgb(255, 153, 0);
+            position: relative;
+            top:40px;
+            left: 30%;">military_tech</div>
+      
+            <div class="bestMatch${personIndex}" style="font-size: 0px;
+            font-weight: 900;
+            display: block;
+            position: relative;
+            top:20px;
+            opacity: 0;">Best Match</div> 
+      
+          
+          </div>
+          <div class="gauge-container" 
+          style="display: inline-block;
+          position:relative;
+          width: 50px;
+          height: 50px;">
+            <svg class="gauge" viewBox="0 0 150 150" style="position: relative;
+            display: block;">
+              <circle transform="rotate(-90 75 75)"  class="progress${personIndex}" r="65"  cx="75" cy="75" pathLength="1000" 
+              style=" fill: rgba(250, 121, 0, 0.7);
+              stroke: rgb(250, 121, 0);
+              stroke-dasharray: 1000;
+              stroke-dashoffset: 1000;
+              animation-fill-mode: forwards;
+              animation: pulse${personIndex} 2s linear;
+              stroke-width:18;" >
+              </circle>
+            </svg>
+            <span class="center percentage" 
+            style="display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-weight: 900;
+            color: rgb(27, 31, 31);">
+              <span class="value${personIndex}" style="font-size: 13px;">0</span>
+              <span class="percentSymbol" style="font-size: 8px;">%</span>
+            </span>
+          </div>        
+        </div>
+      <div class="collapsible-body" style="padding:12px;">
+        
+        <div class="individualTags${personIndex}">
+          <P>Matched Criterias: </P>
+        </div>
+        <div class="personalInfo">
+        <p>Email: ${email}</p>
+        <p>Phone: ${phone}</p>
+        </div>
+        <div style="margin-top:20px;">
+        <a class="waves-effect waves-light btn-small">More Info</a>
+        <a class="waves-effect waves-light btn-small">Save</a>
+        </div>
       </div>
-    </div>
-  </li>`);
+      </li>`);
 
-      individualTages.forEach(tag => {
-        $(`.individualTags${i}`).append(
-          `<div class="chip green lighten-1 ">
-            ${tag}
-          </div>`);
+      $('head').append(`<style class="matchRateKeyFrames${personIndex}"></style>`);
+          
+        var largestMatchRate = sortedMatchRates[sortedMatchRates.length - 1];
+        console.log("largestMatchRate: " + largestMatchRate);
+        //animate the match rate number
+        animateMatchRate(`.value${personIndex}`,0,matchRate,2000, largestMatchRate, personIndex);
+      
+        
+            // append tags for each individual
+            individualTages.forEach(tag => {
+              $(`.individualTags${personIndex}`).append(
+                `<div class="chip green lighten-1 individualTag" style="font-weight: bolder;">
+                  ${tag}
+                </div>`);
+      
+            })
 
-      })
+        }
+        
 
     }
+    
     
     $(".home").animate({left: 0 - windowWidth}, 800);
     $(".searchResults").show();
@@ -336,7 +461,8 @@ $('#searchBtn').click((evt) => {
     $(".searchForm")[0].reset();
   });
   
-});
+}
+  );
 
 $(".backWard").click((evt) => {
   evt.preventDefault();
@@ -345,3 +471,130 @@ $(".backWard").click((evt) => {
   $(".searchResults").animate({left: windowWidth}, 800);
   $(".home").show();
 });
+
+
+
+function animateMatchRate(element, start, end, duration, largestMatchRate,personIndex) {
+  if (start === end) return;
+  var range = end - start;
+  var current = start;
+  var increment = end > start? 1 : -1;
+  var stepTime = Math.abs(Math.floor(duration / range));
+  var obj = document.querySelector(element);
+  var timer = setInterval(function() {
+      current += increment;
+      obj.innerHTML = current;
+      if (current == end) {
+          clearInterval(timer);
+      }
+  }, stepTime);
+  
+  //define colors to animate
+  var g = 500 * (end / 100);
+  var r = 250;
+  if(g > 250){
+    r = g - 250;
+    g = 250;
+  }
+
+  console.log("largestMatchRate: " + largestMatchRate);
+  if(end === largestMatchRate){
+    console.log("this is the largest");
+    $(`.progress${personIndex}`).animate({strokeDashoffset: 1000 - end * 10},2000,"linear", ()=> {
+    $(`.star${personIndex}`).animate({top: '5px', fontSize: '20px', opacity:1},200,"linear", () => {
+      $(`.bestMatch${personIndex}`).animate({top: '2px', fontSize: '10px', opacity:1},200,"linear")
+    });
+  });
+  }else{
+    $(`.progress${personIndex}`).animate({strokeDashoffset: 1000 - end * 10},2000,"linear");
+  }
+  
+  
+  
+  $(`.progress${personIndex}`).css({"fill": `rgba(${r}, ${g}, 0, 0.7)`, "stroke": `rgb(${r}, ${g-50}, 0)`});
+  $(`.matchRateKeyFrames${personIndex}`).append(` @keyframes pulse${personIndex} {
+    0% {
+      fill: rgb(${r}, 0, 0, 0);
+      stroke: rgb(255, 0, 0);
+    }
+    85%{
+      fill: rgb(${r}, 0, 0, 0);
+
+    }
+    100% {
+      fill:rgba(${r}, ${g}, 0, 0.7);
+      stroke: rgb(${r}, ${g-50}, 0);
+  }
+
+}`);
+
+
+
+// .append(` @keyframes pulse {
+//   0% {
+//     fill: rgb(${r}, 0, 0, 0);
+    
+//   }
+//   100% {
+//     fill:rgba(${r}, ${g}, 0, 0.7);
+    
+// }
+
+// }`);
+
+
+
+  // $('svg').hover(()=>{
+  //   $('.progress').css("fill", "rgb(250,0, 0)");
+  //   console.log("on hover");
+  // });
+
+
+  // $.keyframes.define([{
+  //   name:'pulse', 
+  //     '0%': {
+  //       'fill': 'rgb(250, 0, 0)',
+  //       'stroke': 'rgb(250, 0, 0)'
+  //     },
+  //     '100%': {
+  //       'fill':'rgb(32, 216, 32)',
+  //       'stroke': 'rgb(5, 124, 41)'
+  //     }
+  // }]);
+  
+    // $('.progress')
+    //   .animate({'stroke-dashoffset': 900}, 1000)
+    //   .css({'fill': 'red', 'transition': 'fill 5s'});
+    // console.log('on');
+
+    // $('.progress')
+    //   .animate({'stroke-dashoffset': 900}, 1000)
+    //   .css({'fill': 'transparent', 'transition': 'fill 1s'});
+  
+  
+  
+  //document.querySelector(".progress").setAttribute("fill","rgb("+0+", "+240+", "+0+")");
+
+  // $('.strokeAnimate').animate(
+  //   {"stroke":  "rgb(0, 250, 0)",
+    
+  // },5000,"linear"
+  
+  // )
+  
+    // $('.progress').stop()
+    //   .animate({'stroke-dashoffset': 0}, 1000)
+    //   .css({'fill': 'red', 'transition': 'fill 10s'});
+    // console.log('on');
+  
+    // $('svg').find('.social-circle').stop()
+    //   .animate({'stroke-dashoffset': 900}, 1000)
+    //   .css({'fill': 'transparent', 'transition': 'fill 1s'});
+  
+  
+    
+
+}
+
+  
+ 

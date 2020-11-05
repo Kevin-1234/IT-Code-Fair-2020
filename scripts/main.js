@@ -11,6 +11,7 @@ $(document).ready(function(){
 // initial position of each component
 $(".home").animate({left: '0px'});
 $(".searchResults").animate({left: windowWidth});
+$(".moreInfo").animate({left: windowWidth});
 
 screenTrack = "home";
 $('.header').append(`<h6 class="title">Select Area</h6>`)
@@ -332,8 +333,15 @@ $('#searchBtn').click((evt) => {
     for (let i=sortedMatchRates.length; i >= 0; i--){
           let personName = '';
           let image = '';
+          let imageLarge = '';
           let phone = '';
           let email = '';
+          let area = '';
+          let teams = '';
+          let organisationalskills = [];
+          let skills = [];
+          let communication = [];
+
           let personIndex = -1;
           let individualTages = [];
           let matchRate = 0;
@@ -344,8 +352,15 @@ $('#searchBtn').click((evt) => {
           console.log("sortedMatchRates[i]:" + sortedMatchRates[i]);
          personName = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].name;
          image = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].image;
+         imageLarge = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].imageLarge;
          phone = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].phone;
          email = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].email;
+         area = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].area;
+         teams = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].teams;
+         organisationalskills = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].organisationalskills;
+         skills = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].skills;
+         communication = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].communication;
+
          individualTages = mRsAndITagsWithIndexes[x].individualTages;
          matchRate = mRsAndITagsWithIndexes[x].matchRate;
          personIndex = mRsAndITagsWithIndexes[x].index;
@@ -410,7 +425,7 @@ $('#searchBtn').click((evt) => {
             transform: translate(-50%,-50%);
             font-weight: 900;
             color: rgb(27, 31, 31);">
-              <span class="value${personIndex}" style="font-size: 13px;">0</span>
+              <span class="value${personIndex}" style="font-size: 12px;">0</span>
               <span class="percentSymbol" style="font-size: 8px;">%</span>
             </span>
           </div>        
@@ -425,8 +440,8 @@ $('#searchBtn').click((evt) => {
         <p>Phone: ${phone}</p>
         </div>
         <div style="margin-top:20px;">
-        <a class="waves-effect waves-light btn-small">More Info</a>
-        <a class="waves-effect waves-light btn-small">Save</a>
+        <a class="waves-effect waves-light btn-small moreInfoBtn${personIndex}"><i class="material-icons left">read_more</i>More</a>
+        <a class="waves-effect waves-light btn-small"><i class="material-icons left">bookmark</i>Save</a>
         </div>
       </div>
       </li>`);
@@ -449,8 +464,32 @@ $('#searchBtn').click((evt) => {
             })
 
         }
-        
 
+        $(`.moreInfoBtn${personIndex}`).click((evt) => {
+          evt.preventDefault();
+          $(".moreInfo").animate({left: 0}, 500);
+          $(".searchResults").hide();
+          $(".searchResults").animate({left: 0 - windowWidth}, 800);
+          $(".moreInfo").show();
+          $('h6').remove();
+          $('.header').append(`<h6 class="title">Profile</h6>`);
+          $('.profileHeader').append(
+            `<img src="${imageLarge}" class="circle" style="height:50%; width: 50%;">
+          <h6 style="font-weight: 900;">${personName}</h6>`
+          );
+          $('.profileBody').append(
+            `<p>Area: ${area}</p>
+            <p>Teams: ${teams}</p>
+            <p>Organisationalskills: ${organisationalskills}</p>
+            <p>Communication: ${communication}</p>
+            <p>Skills: ${skills}</p>
+            <p>Phone: ${phone}</p>
+            <p>Email: ${email}</p>`
+          );
+
+          
+        });
+        
     }
     
     
@@ -459,6 +498,8 @@ $('#searchBtn').click((evt) => {
     $(".searchResults").animate({left: 0}, 500);
     $(".home").hide();
     $(".searchForm")[0].reset();
+
+    
   });
   
 }
@@ -466,11 +507,15 @@ $('#searchBtn').click((evt) => {
 
 $(".backWard").click((evt) => {
   evt.preventDefault();
+  
+  console.log("title:"+$('.title').text());
   $(".home").animate({left: 0}, 500);
   $(".searchResults").hide();
+  $(".resultsList").empty();
   $(".searchResults").animate({left: windowWidth}, 800);
   $(".home").show();
 });
+
 
 
 

@@ -186,6 +186,13 @@
 
   margin-top: 20px;
 }
+
+.active .collapsible-body .btn-small{
+  height: 30px;
+  width: 110px;
+  font-size: 12px;
+}
+
 .collapsible-body p{
 
   margin:0;
@@ -199,7 +206,7 @@
     opacity: 1;
     position: absolute;
     
-    
+    top:0;
     width: 100%;
   }
   .home form{
@@ -208,6 +215,16 @@
   }
 
   .searchResults {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    top:0;
+    display: none;
+    opacity: 1;
+    
+  }
+
+  .moreInfo {
     height: auto;
     width: 100%;
     position: absolute;

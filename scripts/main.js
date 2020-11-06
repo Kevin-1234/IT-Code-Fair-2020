@@ -1,7 +1,7 @@
 
 //get the device window size to decide the distance to move for each component
 var windowWidth = $(window).width();
-var screenTrack = "";
+
 // initialize materialize form and collapasible card
 $(document).ready(function(){
   $('select').formSelect();
@@ -13,7 +13,7 @@ $(".home").animate({left: '0px'});
 $(".searchResults").animate({left: windowWidth});
 $(".moreInfo").animate({left: windowWidth});
 
-screenTrack = "home";
+
 $('.header').append(`<h6 class="title">Select Area</h6>`)
 // show different set of skills based on the discipline selected
 $('select').on('change', function (e) {
@@ -158,7 +158,7 @@ $('select').on('change', function (e) {
 $('#searchBtn').click((evt) => {
   evt.preventDefault();
   screenTrack = "Search Result";
-  $('h6').remove(".title");
+  $('h6').remove();
   $('.header').append(`<h6 class="title">Search Results</h6>`);
   var area = $('select').val();
   var skills = $('input[name="skills"]:checked');
@@ -269,7 +269,7 @@ $('#searchBtn').click((evt) => {
     // append selected creterias
     for(let i=0; i<tags.length; i++){
       $('.selectedCriterias').append(
-        `<div class="chip" style="font-weight: bolder;">
+        `<div class="chip selectedTags" style="font-weight: bolder;">
           ${tags[i]}
         </div>`);
     }
@@ -373,7 +373,7 @@ $('#searchBtn').click((evt) => {
           console.log("personIndex is not -1");
         // append items to the result list
         $('.resultsList').append(`<li>
-        <div class="collapsible-header" style="height:52px; 
+        <div class="collapsible-header" style="height:62px; 
         align-items:center;
         display: flex;
         justify-content: space-between;
@@ -403,11 +403,11 @@ $('#searchBtn').click((evt) => {
           <div class="gauge-container" 
           style="display: inline-block;
           position:relative;
-          width: 50px;
-          height: 50px;">
+          width: 60px;
+          height: 60px;">
             <svg class="gauge" viewBox="0 0 150 150" style="position: relative;
             display: block;">
-              <circle transform="rotate(-90 75 75)"  class="progress${personIndex}" r="65"  cx="75" cy="75" pathLength="1000" 
+              <circle transform="rotate(-90 75 75)"  class="progress${personIndex}" r="66"  cx="75" cy="75" pathLength="1000" 
               style=" fill: rgba(250, 121, 0, 0.7);
               stroke: rgb(250, 121, 0);
               stroke-dasharray: 1000;
@@ -425,8 +425,8 @@ $('#searchBtn').click((evt) => {
             transform: translate(-50%,-50%);
             font-weight: 900;
             color: rgb(27, 31, 31);">
-              <span class="value${personIndex}" style="font-size: 12px;">0</span>
-              <span class="percentSymbol" style="font-size: 8px;">%</span>
+              <span class="value${personIndex}" style="font-size: 14px;">0</span>
+              <span class="percentSymbol" style="font-size: 9px;">%</span>
             </span>
           </div>        
         </div>
@@ -471,6 +471,7 @@ $('#searchBtn').click((evt) => {
           $(".searchResults").hide();
           $(".searchResults").animate({left: 0 - windowWidth}, 800);
           $(".moreInfo").show();
+
           $('h6').remove();
           $('.header').append(`<h6 class="title">Profile</h6>`);
           $('.profileHeader').append(
@@ -507,13 +508,30 @@ $('#searchBtn').click((evt) => {
 
 $(".backWard").click((evt) => {
   evt.preventDefault();
+  let title = document.querySelectorAll('.title');
+  console.log("title:"+title[0].innerHTML);
+  if(title[0].innerHTML === 'Search Results'){
+    $('h6').remove();
+    $('.header').append(`<h6 class="title">Select Area</h6>`);
+    $(".home").animate({left: 0}, 500);
+    $(".searchResults").hide();
+    $(".selectedTags").remove();
+    $(".resultsList").empty();
+    $(".searchResults").animate({left: windowWidth}, 800);
+    $(".home").show();
+
+  }else if(title[0].innerHTML === 'Profile'){
+    $('h6').remove();
+    $('.header').append(`<h6 class="title">Search Results</h6>`);
+    $(".searchResults").animate({left: 0}, 500);
+    $(".moreInfo").animate({left: 0 - windowWidth}, 800);
+    $(".moreInfo").hide();
+    $('.profileHeader').empty();
+    $('.profileBody').empty();
+    $(".searchResults").show();
+  }
+ 
   
-  console.log("title:"+$('.title').text());
-  $(".home").animate({left: 0}, 500);
-  $(".searchResults").hide();
-  $(".resultsList").empty();
-  $(".searchResults").animate({left: windowWidth}, 800);
-  $(".home").show();
 });
 
 
@@ -573,68 +591,6 @@ function animateMatchRate(element, start, end, duration, largestMatchRate,person
 
 }`);
 
-
-
-// .append(` @keyframes pulse {
-//   0% {
-//     fill: rgb(${r}, 0, 0, 0);
-    
-//   }
-//   100% {
-//     fill:rgba(${r}, ${g}, 0, 0.7);
-    
-// }
-
-// }`);
-
-
-
-  // $('svg').hover(()=>{
-  //   $('.progress').css("fill", "rgb(250,0, 0)");
-  //   console.log("on hover");
-  // });
-
-
-  // $.keyframes.define([{
-  //   name:'pulse', 
-  //     '0%': {
-  //       'fill': 'rgb(250, 0, 0)',
-  //       'stroke': 'rgb(250, 0, 0)'
-  //     },
-  //     '100%': {
-  //       'fill':'rgb(32, 216, 32)',
-  //       'stroke': 'rgb(5, 124, 41)'
-  //     }
-  // }]);
-  
-    // $('.progress')
-    //   .animate({'stroke-dashoffset': 900}, 1000)
-    //   .css({'fill': 'red', 'transition': 'fill 5s'});
-    // console.log('on');
-
-    // $('.progress')
-    //   .animate({'stroke-dashoffset': 900}, 1000)
-    //   .css({'fill': 'transparent', 'transition': 'fill 1s'});
-  
-  
-  
-  //document.querySelector(".progress").setAttribute("fill","rgb("+0+", "+240+", "+0+")");
-
-  // $('.strokeAnimate').animate(
-  //   {"stroke":  "rgb(0, 250, 0)",
-    
-  // },5000,"linear"
-  
-  // )
-  
-    // $('.progress').stop()
-    //   .animate({'stroke-dashoffset': 0}, 1000)
-    //   .css({'fill': 'red', 'transition': 'fill 10s'});
-    // console.log('on');
-  
-    // $('svg').find('.social-circle').stop()
-    //   .animate({'stroke-dashoffset': 900}, 1000)
-    //   .css({'fill': 'transparent', 'transition': 'fill 1s'});
   
   
     

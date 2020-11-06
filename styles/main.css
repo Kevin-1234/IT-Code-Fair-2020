@@ -80,7 +80,8 @@
 
  
 
-  .header {
+  .header{
+    
     position: sticky;
     width: 100%;
     top:-50px;

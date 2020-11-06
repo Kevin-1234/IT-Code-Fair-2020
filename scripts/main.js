@@ -157,9 +157,7 @@ $('select').on('change', function (e) {
 // when click search button
 $('#searchBtn').click((evt) => {
   evt.preventDefault();
-  screenTrack = "Search Result";
-  $('h6').remove();
-  $('.header').append(`<h6 class="title">Search Results</h6>`);
+
   var area = $('select').val();
   var skills = $('input[name="skills"]:checked');
   var nTWW = $('input[name="NTWW"]:checked').val();
@@ -467,10 +465,7 @@ $('#searchBtn').click((evt) => {
 
         $(`.moreInfoBtn${personIndex}`).click((evt) => {
           evt.preventDefault();
-          $(".moreInfo").animate({left: 0}, 500);
-          $(".searchResults").hide();
-          $(".searchResults").animate({left: 0 - windowWidth}, 800);
-          $(".moreInfo").show();
+          
 
           $('h6').remove();
           $('.header').append(`<h6 class="title">Profile</h6>`);
@@ -489,19 +484,28 @@ $('#searchBtn').click((evt) => {
             <a class="waves-effect waves-light btn-small"><i class="material-icons left">bookmark</i>Save</a>`
           );
 
+          $(".moreInfo").show();
+          $(".moreInfo").animate({left: 0}, 250);
+      
+          $(".searchResults").animate({left: 0 - windowWidth}, 300, () => {
+            $(".searchResults").hide();
+          });
+          
           
         });
         
     }
-    
-    
-    $(".home").animate({left: 0 - windowWidth}, 800);
-    $(".searchResults").show();
-    $(".searchResults").animate({left: 0}, 500);
+ 
+  });
+
+
+  $('h6').remove();
+  $('.header').append(`<h6 class="title">Search Results</h6>`);
+  $(".searchResults").show();
+  $(".home").animate({left: 0 - windowWidth}, 300);
+  $(".searchResults").animate({left: 0}, 250, () => {
     $(".home").hide();
     $(".searchForm")[0].reset();
-
-    
   });
   
 }
@@ -542,6 +546,9 @@ $(".backWard").click((evt) => {
  
   
 });
+
+
+
 
 
 

@@ -485,7 +485,8 @@ $('#searchBtn').click((evt) => {
             <p>Communication: ${communication}</p>
             <p>Skills: ${skills}</p>
             <p>Phone: ${phone}</p>
-            <p>Email: ${email}</p>`
+            <p>Email: ${email}</p>
+            <a class="waves-effect waves-light btn-small"><i class="material-icons left">bookmark</i>Save</a>`
           );
 
           
@@ -511,24 +512,32 @@ $(".backWard").click((evt) => {
   let title = document.querySelectorAll('.title');
   console.log("title:"+title[0].innerHTML);
   if(title[0].innerHTML === 'Search Results'){
-    $('h6').remove();
+    $('h6').remove('.title');
     $('.header').append(`<h6 class="title">Select Area</h6>`);
-    $(".home").animate({left: 0}, 500);
-    $(".searchResults").hide();
-    $(".selectedTags").remove();
-    $(".resultsList").empty();
-    $(".searchResults").animate({left: windowWidth}, 800);
     $(".home").show();
+    $(".home").animate({left: 0}, 250);
+    $(".searchResults").animate({left: windowWidth}, 300, () => {
+      $(".selectedTags").remove();
+      $(".resultsList").empty();
+      $(".searchResults").hide();
+    });
+    
 
   }else if(title[0].innerHTML === 'Profile'){
-    $('h6').remove();
+    $('h6').remove('.title');
     $('.header').append(`<h6 class="title">Search Results</h6>`);
-    $(".searchResults").animate({left: 0}, 500);
-    $(".moreInfo").animate({left: 0 - windowWidth}, 800);
-    $(".moreInfo").hide();
-    $('.profileHeader').empty();
-    $('.profileBody').empty();
+    // $(".searchResults").css("z-index", '1');
+    // $(".moreInfo").css("z-index", '0');
     $(".searchResults").show();
+    $(".searchResults").animate({left: 0}, 250);
+    
+    $(".moreInfo").animate({left: windowWidth}, 300, ()=> {
+      $('.profileHeader').empty();
+      $('.profileBody').empty();
+      $(".moreInfo").hide();
+    });
+   
+    
   }
  
   

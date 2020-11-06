@@ -81,7 +81,7 @@
  
 
   .header{
-    
+
     position: sticky;
     width: 100%;
     top:-50px;
@@ -209,13 +209,17 @@
     
     top:0;
     width: 100%;
+
   }
   .home form{
     height: auto;
     
+    
   }
 
   .searchResults {
+   
+    background-color:  #fdfdfd;
     height: auto;
     width: 100%;
     position: absolute;
@@ -226,6 +230,7 @@
   }
 
   .moreInfo {
+    background-color:  #fdfdfd;
     height: auto;
     width: 100%;
     position: absolute;

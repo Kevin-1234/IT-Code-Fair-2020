@@ -373,7 +373,7 @@ $('#searchBtn').click((evt) => {
           console.log("personIndex is not -1");
         // append items to the result list
         $('.resultsList').append(`<li>
-        <div class="collapsible-header" style="height:62px; 
+        <div class="collapsible-header" style="height:102px; 
         align-items:center;
         display: flex;
         justify-content: space-between;
@@ -403,11 +403,11 @@ $('#searchBtn').click((evt) => {
           <div class="gauge-container" 
           style="display: inline-block;
           position:relative;
-          width: 60px;
-          height: 60px;">
+          width: 82px;
+          height: 82px;">
             <svg class="gauge" viewBox="0 0 150 150" style="position: relative;
             display: block;">
-              <circle transform="rotate(-90 75 75)"  class="progress${personIndex}" r="66"  cx="75" cy="75" pathLength="1000" 
+              <circle transform="rotate(-90 75 75)"  class="progress${personIndex}" r="65"  cx="75" cy="75" pathLength="1000" 
               style=" fill: rgba(250, 121, 0, 0.7);
               stroke: rgb(250, 121, 0);
               stroke-dasharray: 1000;

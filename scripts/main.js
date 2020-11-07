@@ -548,6 +548,26 @@ $(".backWard").click((evt) => {
 });
 
 
+$(".employeeSearchBtn").click(() => {
+  let title = document.querySelectorAll('.title');
+  if(title[0].innerHTML === 'Select Area'|| 'Search Results' || 'profile' ){
+    $(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/baseline_person_search_black_24dp.png");
+  }else{
+    $(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/outline_person_search_black_24dp.png");
+  }
+  
+});
+
+$(".collectionBtn").click(() => {
+  let title = document.querySelectorAll('.title');
+  if(title[0].innerHTML === 'Saved Employees'){
+    $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_black_24dp.png");
+  }else{
+    $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_border_black_24dp.png");
+    
+  }
+  
+});
 
 
 

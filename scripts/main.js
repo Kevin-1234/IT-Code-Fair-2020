@@ -13,8 +13,11 @@ $(".home").animate({left: '0px'});
 $(".searchResults").animate({left: windowWidth});
 $(".moreInfo").animate({left: windowWidth});
 
+$(".savedEmployees").animate({left: '0px'});
+$(".savedMoreInfo").animate({left: windowWidth});
 
-$('.header').append(`<h6 class="title">Select Area</h6>`)
+
+$('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Select Area</h6>`)
 // show different set of skills based on the discipline selected
 $('select').on('change', function (e) {
     $('.skills').empty();
@@ -439,13 +442,45 @@ $('#searchBtn').click((evt) => {
         </div>
         <div style="margin-top:20px;">
         <a class="waves-effect waves-light btn-small moreInfoBtn${personIndex}"><i class="material-icons left">read_more</i>More</a>
-        <a class="waves-effect waves-light btn-small"><i class="material-icons left">bookmark</i>Save</a>
+        <a class="waves-effect waves-light btn-small saveBtn${personIndex}"><i class="material-icons left">person_remove</i>Save</a>
         </div>
       </div>
       </li>`);
 
       $('head').append(`<style class="matchRateKeyFrames${personIndex}"></style>`);
+      $(`.saveBtn${personIndex}`).click(() => {
+        let personToSave = {
+          name: personName,
+          area: area,
+          teams: teams,
+          organisationalskills: organisationalSkills,
+          communication: communication,
+          availability: availability,
+          skills: skills,
+          phone: phone,
+          email: email,
+          image: image,
+          imageLarge: imageLarge
+
+        };
+        let personExists = localStorage.getItem(`${personName}`);
+        if(personExists === null){
           
+          localStorage.setItem(`${personName}`, JSON.stringify(personToSave));
+          var toastHTML = `<span>Successfully saved!</span><span class="material-icons">
+          check_circle
+          </span>`;
+          M.toast({html:toastHTML, classes: 'rounded green darken-1'});
+        }else{
+          var toastHTML = `<span>The employee is already existed!</span><span class="material-icons">
+          error
+          </span>`;
+          M.toast({html:toastHTML, classes: 'rounded orange darken-1'});
+          
+        }
+        
+
+      })    
         var largestMatchRate = sortedMatchRates[sortedMatchRates.length - 1];
         console.log("largestMatchRate: " + largestMatchRate);
         //animate the match rate number
@@ -467,8 +502,8 @@ $('#searchBtn').click((evt) => {
           evt.preventDefault();
           
 
-          $('h6').remove();
-          $('.header').append(`<h6 class="title">Profile</h6>`);
+          $('.searchEmployeesStackHeader h6').remove();
+          $('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Profile</h6>`);
           $('.profileHeader').append(
             `<img src="${imageLarge}" class="circle" style="height:50%; width: 50%;">
           <h6 style="font-weight: 900;">${personName}</h6>`
@@ -481,7 +516,7 @@ $('#searchBtn').click((evt) => {
             <p>Skills: ${skills}</p>
             <p>Phone: ${phone}</p>
             <p>Email: ${email}</p>
-            <a class="waves-effect waves-light btn-small"><i class="material-icons left">bookmark</i>Save</a>`
+            <a class="waves-effect waves-light btn-small"><i class="material-icons left">person_remove</i>Save</a>`
           );
 
           $(".moreInfo").show();
@@ -500,7 +535,7 @@ $('#searchBtn').click((evt) => {
 
 
   $('h6').remove();
-  $('.header').append(`<h6 class="title">Search Results</h6>`);
+  $('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Search Results</h6>`);
   $(".searchResults").show();
   $(".home").animate({left: 0 - windowWidth}, 300);
   $(".searchResults").animate({left: 0}, 250, () => {
@@ -511,13 +546,16 @@ $('#searchBtn').click((evt) => {
 }
   );
 
-$(".backWard").click((evt) => {
+
+//go back  
+$(".searchEmployeesStackHeader .backWard").click((evt) => {
   evt.preventDefault();
-  let title = document.querySelectorAll('.title');
-  console.log("title:"+title[0].innerHTML);
-  if(title[0].innerHTML === 'Search Results'){
-    $('h6').remove('.title');
-    $('.header').append(`<h6 class="title">Select Area</h6>`);
+  let screenTitle = document.querySelectorAll('.screenTitle');
+  
+  console.log("screenTitle:"+screenTitle[0].innerHTML);
+  if(screenTitle[0].innerHTML === 'Search Results'){
+    $('.searchEmployeesStackHeader h6').remove('.screenTitle');
+    $('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Select Area</h6>`);
     $(".home").show();
     $(".home").animate({left: 0}, 250);
     $(".searchResults").animate({left: windowWidth}, 300, () => {
@@ -527,9 +565,9 @@ $(".backWard").click((evt) => {
     });
     
 
-  }else if(title[0].innerHTML === 'Profile'){
-    $('h6').remove('.title');
-    $('.header').append(`<h6 class="title">Search Results</h6>`);
+  }else if(screenTitle[0].innerHTML === 'Profile'){
+    $('.searchEmployeesStackHeader h6').remove('.screenTitle');
+    $('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Search Results</h6>`);
     // $(".searchResults").css("z-index", '1');
     // $(".moreInfo").css("z-index", '0');
     $(".searchResults").show();
@@ -547,25 +585,127 @@ $(".backWard").click((evt) => {
   
 });
 
+$(".savedEmployeesStackHeader .backWard").click(() => {
+  let savedScreenTitle = document.querySelectorAll('.savedScreenTitle');
+  if(savedScreenTitle[0].innerHTML === 'Saved Employee Profile'){
+    $('.savedEmployeesStackHeader h6').remove('.savedScreenTitle');
+    $('.savedEmployeesStackHeader').append(`<h6 class="savedScreenTitle">Saved Employees</h6>`);
+    // $(".searchResults").css("z-index", '1');
+    // $(".moreInfo").css("z-index", '0');
+    $(".savedEmployees").show();
+    $(".savedEmployees").animate({left: 0}, 250);
+    
+    $(".savedMoreInfo").animate({left: windowWidth}, 300, ()=> {
+      $('.savedProfileHeader').empty();
+      $('.savedProfileBody').empty();
+      $(".savedMoreInfo").hide();
+    });
+
+  }
+
+});
+
 
 $(".employeeSearchBtn").click(() => {
-  let title = document.querySelectorAll('.title');
-  if(title[0].innerHTML === 'Select Area'|| 'Search Results' || 'profile' ){
+
     $(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/baseline_person_search_black_24dp.png");
-  }else{
-    $(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/outline_person_search_black_24dp.png");
-  }
+    $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_border_black_24dp.png");
+
+    //switch vertical stack to search employees
+
+    $('.searchEmployeesStack').css({'z-index':'2','display':'block'});
+    $('.savedEmployeesStack').css({'z-index':'1','display':'none'});
+    //$('.home').show();
+    //$('.searchResults').css({ 'z-index':'2'});
+    //$('.searchResults').show()
+    //$('.moreInfo').css({ 'z-index':'2'}).show();
+    // $('.savedEmployees').css({'z-index':'1'});
+    // $('.savedMoreInfo').css({'z-index':'1'});
   
 });
 
 $(".collectionBtn").click(() => {
-  let title = document.querySelectorAll('.title');
-  if(title[0].innerHTML === 'Saved Employees'){
-    $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_black_24dp.png");
-  }else{
-    $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_border_black_24dp.png");
-    
+  
+  //switch button icon image
+  $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_black_24dp.png");
+  $(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/outline_person_search_black_24dp.png");
+
+  //switch vertical stack to saved employees
+  
+  $('.savedEmployeesStack').css({'z-index':'2','display':'block'});
+  $('.searchEmployeesStack').css({'z-index':'1','display':'none'});
+  // $('.savedEmployees').css({'z-index':'2','display':'block'});
+  // $('.savedMoreInfo').css({'z-index':'2'});
+  // $('.home').css({ 'z-index':'1'});
+  // $('.searchResults').css({ 'z-index':'1'});
+  // $('.moreInfo').css({'z-index':'1'});  
+
+  $('.savedEmployeesStackHeader h6').remove('.savedScreenTitle');
+  $('.savedEmployeesStackHeader').append(`<h6 class="savedScreenTitle">Saved Employees</h6>`);
+  $('.collection').empty();
+  for(var i = 0; i < localStorage.length; i++){
+    let person = localStorage.getItem(localStorage.key(i));
+    let index = i;
+    console.log(localStorage.key(i));
+    person = JSON.parse(person);
+    $('.collection').append(`<li class="collection-item avatar savedItem${i}">
+  <img src="${person.image}" alt="" class="circle">
+  <span class="title">${person.name}</span>
+  <p>Email:${person.email} <br>
+     Phone:${person.phone}
+  </p>
+  <a class="waves-effect waves-light btn-small savedMoreInfoBtn${i}"><i class="material-icons left">read_more</i>More</a>
+  <a class="waves-effect waves-light btn-small removeBtn${i}"><i class="material-icons left">person_remove</i>Remove</a>
+</li>`)
+
+
+
+
+$(`.savedMoreInfoBtn${i}`).click(() => {
+  $('.savedEmployeesStackHeader h6').remove('.savedScreenTitle');
+  $('.savedEmployeesStackHeader').append(`<h6 class="savedScreenTitle">Saved Employee Profile</h6>`);
+  $('.savedProfileHeader').append(
+    `<img src="${person.imageLarge}" class="circle" style="height:50%; width: 50%;">
+  <h6 style="font-weight: 900;">${person.name}</h6>`
+  );
+  $('.savedProfileBody').append(
+    `<p>Area: ${person.area}</p>
+    <p>Teams: ${person.teams}</p>
+    <p>Organisationalskills: ${person.organisationalskills}</p>
+    <p>Communication: ${person.communication}</p>
+    <p>Skills: ${person.skills}</p>
+    <p>Phone: ${person.phone}</p>
+    <p>Email: ${person.email}</p>
+    <a class="waves-effect waves-light btn-small"><i class="material-icons left">person_remove</i>Save</a>`
+  );
+
+  $(".savedMoreInfo").show();
+  $(".savedMoreInfo").animate({left: 0}, 250);
+
+  $(".savedEmployees").animate({left: 0 - windowWidth}, 300, () => {
+    $(".savedEmployees").hide();
+  });
+
+});
+$(`.removeBtn${i}`).click((evt) => {
+  evt.preventDefault();
+
+  console.log('localStorage.key(i): '+person.name)
+  console.log('${i}: '+index)
+  localStorage.removeItem(person.name);
+  $('li').remove(`.savedItem${index}`);
+  var toastHTML = `<span>Successfully removed!</span><span class="material-icons">
+  check_circle
+  </span>`;
+  M.toast({html:toastHTML, classes: 'rounded green darken-1'});
+});
+
+
+
+
   }
+
+  
   
 });
 

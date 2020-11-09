@@ -16,6 +16,8 @@ $(".moreInfo").animate({left: windowWidth});
 $(".savedEmployees").animate({left: '0px'});
 $(".savedMoreInfo").animate({left: windowWidth});
 
+// initialize bottom icon
+$(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/baseline_person_search_black_24dp.png");
 
 $('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Select Area</h6>`)
 // show different set of skills based on the discipline selected
@@ -441,8 +443,8 @@ $('#searchBtn').click((evt) => {
         <p>Phone: ${phone}</p>
         </div>
         <div style="margin-top:20px;">
-        <a class="waves-effect waves-light btn-small moreInfoBtn${personIndex}"><i class="material-icons left">read_more</i>More</a>
-        <a class="waves-effect waves-light btn-small saveBtn${personIndex}"><i class="material-icons left">person_remove</i>Save</a>
+        <a class="waves-effect waves-light btn-small blue darken-3 moreInfoBtn${personIndex}"><i class="material-icons left">read_more</i>More</a>
+        <a class="waves-effect waves-light btn-small light-blue darken-2 saveBtn${personIndex}"><i class="material-icons left">person_add_alt_1</i>Save</a>
         </div>
       </div>
       </li>`);
@@ -516,8 +518,41 @@ $('#searchBtn').click((evt) => {
             <p>Skills: ${skills}</p>
             <p>Phone: ${phone}</p>
             <p>Email: ${email}</p>
-            <a class="waves-effect waves-light btn-small"><i class="material-icons left">person_remove</i>Save</a>`
+            <a class="waves-effect waves-light btn-small light-blue darken-2 moreInfoSaveBtn"><i class="material-icons left">person_add_alt_1</i>Save</a>`
           );
+
+          $('.moreInfoSaveBtn').click(() => {
+            let personToSave = {
+              name: personName,
+              area: area,
+              teams: teams,
+              organisationalskills: organisationalSkills,
+              communication: communication,
+              availability: availability,
+              skills: skills,
+              phone: phone,
+              email: email,
+              image: image,
+              imageLarge: imageLarge
+    
+            };
+            let personExists = localStorage.getItem(`${personName}`);
+            if(personExists === null){
+              
+              localStorage.setItem(`${personName}`, JSON.stringify(personToSave));
+              var toastHTML = `<span>Successfully saved!</span><span class="material-icons">
+              check_circle
+              </span>`;
+              M.toast({html:toastHTML, classes: 'rounded green darken-1'});
+            }else{
+              var toastHTML = `<span>The employee is already existed!</span><span class="material-icons">
+              error
+              </span>`;
+              M.toast({html:toastHTML, classes: 'rounded orange darken-1'});
+              
+            }
+
+          });  
 
           $(".moreInfo").show();
           $(".moreInfo").animate({left: 0}, 250);
@@ -652,14 +687,14 @@ $(".collectionBtn").click(() => {
     let index = i;
     console.log(localStorage.key(i));
     person = JSON.parse(person);
-    $('.collection').append(`<li class="collection-item avatar savedItem${i}">
+    $('.collection').append(`<li class="collection-item avatar savedItem${i}" style="font-size: 14px; font-weight:900;">
   <img src="${person.image}" alt="" class="circle">
   <span class="title">${person.name}</span>
   <p>Email:${person.email} <br>
      Phone:${person.phone}
   </p>
-  <a class="waves-effect waves-light btn-small savedMoreInfoBtn${i}"><i class="material-icons left">read_more</i>More</a>
-  <a class="waves-effect waves-light btn-small removeBtn${i}"><i class="material-icons left">person_remove</i>Remove</a>
+  <a class="waves-effect waves-light btn-small blue darken-3 savedMoreInfoBtn${i}" ><i class="material-icons left" >read_more</i>More</a>
+  <a class="waves-effect waves-light btn-small red darken-4 savedRemoveBtn${i} "><i class="material-icons left">person_remove</i>Remove</a>
 </li>`)
 
 
@@ -680,8 +715,29 @@ $(`.savedMoreInfoBtn${i}`).click(() => {
     <p>Skills: ${person.skills}</p>
     <p>Phone: ${person.phone}</p>
     <p>Email: ${person.email}</p>
-    <a class="waves-effect waves-light btn-small"><i class="material-icons left">person_remove</i>Save</a>`
+    <a class="waves-effect waves-light btn-small red darken-4 savedMoreInfoRemoveBtn"><i class="material-icons left">person_remove</i>Remove</a>`
   );
+
+  $('.savedMoreInfoRemoveBtn').click(() => {
+    console.log('avedMoreInfoRemoveBtn${i}: '+index)
+    localStorage.removeItem(person.name);
+    $('li').remove(`.savedItem${index}`);
+    var toastHTML = `<span>Successfully removed!</span><span class="material-icons">
+    check_circle
+    </span>`;
+    M.toast({html:toastHTML, classes: 'rounded green darken-1'});
+    
+
+    //move back to collection after the person is removed
+    $('.savedEmployeesStackHeader h6').remove('.savedScreenTitle');
+    $('.savedEmployeesStackHeader').append(`<h6 class="savedScreenTitle">Saved Employees</h6>`);
+    $(".savedEmployees").show();
+    $(".savedEmployees").animate({left: 0}, 250);
+    $(".savedMoreInfo").animate({left: windowWidth}, 300, ()=> {
+      $('.savedProfileHeader').empty();
+      $('.savedProfileBody').empty();
+      $(".savedMoreInfo").hide();});
+  })
 
   $(".savedMoreInfo").show();
   $(".savedMoreInfo").animate({left: 0}, 250);
@@ -691,7 +747,7 @@ $(`.savedMoreInfoBtn${i}`).click(() => {
   });
 
 });
-$(`.removeBtn${i}`).click((evt) => {
+$(`.savedRemoveBtn${i}`).click((evt) => {
   evt.preventDefault();
 
   console.log('localStorage.key(i): '+person.name)

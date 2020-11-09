@@ -6,72 +6,10 @@
 
 
   :root {
-    background-color:  #fdfdfd;
+    background-color:  #e9e8e8;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;  
   }
-
-  /* *,*::before, *::after{
-    box-sizing: border-box;
-  } */
-
-
-  
-
-  /* animation: dash 5s linear forwards; */
-  /* .progress{
-    fill: rgb(255, 60, 0);
-    stroke: rgb(250, 121, 0);
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation-fill-mode: forwards;
-    animation: pulse 5s linear;
-    stroke-width:18;
-  } */
-    /* @keyframes pulse {
-    0% {
-
-      fill: rgba(250, 0, 0, 0.7);
-      stroke: rgb(250, 0, 0);
-    }
-    100% {
-      fill: rgba(250, 121, 0, 0.7);
-      stroke: rgb(250, 121, 0);
-  }
-
-}   */
-
-
-/* .gauge-container{
-  display: inline-block;
-  position:relative;
-  width: 50px;
-  height: 50px;
-}
-
-.gauge-container .gauge{
-  position: relative;
-  display: block;
-}
-
-.gauge-container .center{
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  font-weight: 900;
-  color: rgb(27, 31, 31);
-
-}
-
-.gauge-container .center .value{
-  font-size: 13px;
-}
-
-.gauge-container .center .percentSymbol{
-  font-size: 8px;
-} */
 
 
   body{
@@ -92,6 +30,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    
   }
 
    .searchEmployeesStackHeader h6 ,.savedEmployeesStackHeader h6{
@@ -101,7 +40,6 @@
     padding-bottom: 3px;
   }
   .searchEmployeesStackHeader .backWard, .savedEmployeesStackHeader .backWard{
-    
     
     position: relative;
     left: 25px;

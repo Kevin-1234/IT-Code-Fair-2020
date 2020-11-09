@@ -8,7 +8,7 @@ $(document).ready(function(){
   $('.collapsible').collapsible();
 });
 
-// initial position of each component
+// initialize position of each component
 $(".home").animate({left: '0px'});
 $(".searchResults").animate({left: windowWidth});
 $(".moreInfo").animate({left: windowWidth});
@@ -534,7 +534,7 @@ $('#searchBtn').click((evt) => {
   });
 
 
-  $('h6').remove();
+  $('.searchEmployeesStackHeader h6').remove();
   $('.searchEmployeesStackHeader').append(`<h6 class="screenTitle">Search Results</h6>`);
   $(".searchResults").show();
   $(".home").animate({left: 0 - windowWidth}, 300);
@@ -625,7 +625,8 @@ $(".employeeSearchBtn").click(() => {
 });
 
 $(".collectionBtn").click(() => {
-  
+  let savedScreenTitle = document.querySelectorAll('.savedScreenTitle');
+  console.log(savedScreenTitle);
   //switch button icon image
   $(".collectionBtn img:first").attr("src", "assets/images/AppIcons/round_star_black_24dp.png");
   $(".employeeSearchBtn img:first").attr("src", "assets/images/AppIcons/outline_person_search_black_24dp.png");
@@ -640,8 +641,11 @@ $(".collectionBtn").click(() => {
   // $('.searchResults').css({ 'z-index':'1'});
   // $('.moreInfo').css({'z-index':'1'});  
 
-  $('.savedEmployeesStackHeader h6').remove('.savedScreenTitle');
-  $('.savedEmployeesStackHeader').append(`<h6 class="savedScreenTitle">Saved Employees</h6>`);
+  if(savedScreenTitle.length === 0){
+    $('.savedEmployeesStackHeader h6').remove('.savedScreenTitle');
+    $('.savedEmployeesStackHeader').append(`<h6 class="savedScreenTitle">Saved Employees</h6>`);
+  }
+  
   $('.collection').empty();
   for(var i = 0; i < localStorage.length; i++){
     let person = localStorage.getItem(localStorage.key(i));

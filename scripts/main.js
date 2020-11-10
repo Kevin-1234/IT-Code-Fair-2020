@@ -657,6 +657,30 @@ $(".savedEmployeesStackHeader .backWard").click(() => {
   }
 });
 
+
+
+$(".registerBtn").click(() => {
+  $(".registerBtn img:first").attr(
+    "src",
+    "assets/images/AppIcons/baseline_group_add_black_24dp.png"
+  );
+  $(".employeeSearchBtn img:first").attr(
+    "src",
+    "assets/images/AppIcons/outline_person_search_black_24dp.png"
+  );
+  $(".collectionBtn img:first").attr(
+    "src",
+    "assets/images/AppIcons/round_star_border_black_24dp.png"
+  );
+
+  $(".registerEmployeeStack").css({ "z-index": "2", display: "block" });
+  $(".searchEmployeesStack").css({ "z-index": "1", display: "none" });
+  $(".savedEmployeesStack").css({ "z-index": "1", display: "none" });   
+
+});
+
+
+
 $(".employeeSearchBtn").click(() => {
   $(".employeeSearchBtn img:first").attr(
     "src",
@@ -666,11 +690,16 @@ $(".employeeSearchBtn").click(() => {
     "src",
     "assets/images/AppIcons/round_star_border_black_24dp.png"
   );
+  $(".registerBtn img:first").attr(
+    "src",
+    "assets/images/AppIcons/outline_group_add_black_24dp.png"
+  );
 
   //switch vertical stack to search employees
 
   $(".searchEmployeesStack").css({ "z-index": "2", display: "block" });
   $(".savedEmployeesStack").css({ "z-index": "1", display: "none" });
+  $(".registerEmployeeStack").css({ "z-index": "1", display: "none" });
   //$('.home').show();
   //$('.searchResults').css({ 'z-index':'2'});
   //$('.searchResults').show()
@@ -691,11 +720,16 @@ $(".collectionBtn").click(() => {
     "src",
     "assets/images/AppIcons/outline_person_search_black_24dp.png"
   );
+  $(".registerBtn img:first").attr(
+    "src",
+    "assets/images/AppIcons/outline_group_add_black_24dp.png"
+  );
 
   //switch vertical stack to saved employees
 
   $(".savedEmployeesStack").css({ "z-index": "2", display: "block" });
   $(".searchEmployeesStack").css({ "z-index": "1", display: "none" });
+  $(".registerEmployeeStack").css({ "z-index": "1", display: "none" });
   // $('.savedEmployees').css({'z-index':'2','display':'block'});
   // $('.savedMoreInfo').css({'z-index':'2'});
   // $('.home').css({ 'z-index':'1'});
@@ -791,70 +825,20 @@ $(".collectionBtn").click(() => {
   }
 });
 
+
+
 if ("indexedDB" in window) {
   // We have indexedDB
   var conn = indexedDB.open("employeeDB", 1.0);
 
   //when the db connection is successful
-  conn.addEventListener("success", function (evt) {
+  conn.addEventListener("success", async function (evt) {
     var db = evt.target.result;
     console.log("connected event", evt);
 
     // var saveButton = document.querySelector("#saveBtn");
     // var loadButton = document.querySelector("#loadBtn");
 
-    //add new data
-    addData = () => {
-      // var transaction = db.transaction("employeeStore", "readwrite");
-      // var objectStore = transaction.objectStore("employeeStore");
-      // var idInput = document.querySelector("#idInput");
-      // var nameInput = document.querySelector("#nameInput");
-      // var request = objectStore.add({
-      //   id: idInput.value,
-      //   name: nameInput.value,
-      // });
-      var transaction = db.transaction("employeeStore", "readwrite");
-      var objectStore = transaction.objectStore("employeeStore");
-      var cursor = objectStore.openCursor();
-
-      cursor.addEventListener("success", function (evt) {
-        var thisCursor = evt.target.result;
-        var html = "";
-        if (thisCursor) {
-          console.log("Found items, do not populate");
-        }
-        //populate the database if there is no items in it
-        else {
-          console.log("No items, populate the database");
-
-          $.get("data.json", (data) => {
-            var transaction = db.transaction("employeeStore", "readwrite");
-            var objectStore = transaction.objectStore("employeeStore");
-            data.forEach((item) => {
-              let randomId = Math.round(Math.random() * 10000000);
-
-              objectStore.add({
-                id: randomId,
-                name: item.name,
-                area: item.area,
-                teams: item.teams,
-                organisationalskills: item.organisationalskills,
-                communication: item.communication,
-                availability: item.availability,
-                skills: item.skills,
-                phone: item.phone,
-                email: item.email,
-                image: item.image,
-                imageLarge: item.imageLarge,
-              });
-            });
-          });
-        }
-      });
-    };
-    addData();
-    //get existing data
-    //var request = objectStore.get(321);
 
     loadData = () => {
       
@@ -873,6 +857,29 @@ if ("indexedDB" in window) {
 
           thisCursor.continue();
         } else {
+          var allSkillsOfData = [];
+          data.forEach(employee => {
+            
+            employee.skills.forEach(skill => {
+              if(allSkillsOfData.indexOf(skill) === -1){
+
+                allSkillsOfData.push(skill);
+              }
+            });
+          });
+
+          var dataObject = {};
+          allSkillsOfData.forEach(skill => {
+            dataObject[skill]=null;
+
+          });
+          console.log(dataObject);
+
+          $(document).ready(function(){
+            $('input.autocomplete').autocomplete({
+              data: dataObject
+            });
+          });
           $("#searchBtn").click((evt) => {
             evt.preventDefault();
             console.log("data: " + data);
@@ -1326,11 +1333,98 @@ if ("indexedDB" in window) {
       console.log("data set: " + data);
     };
 
+    //loadData();
 
-    loadData();
-   
+    //add new data
+   populateData = () => {
+     
+      var transaction = db.transaction("employeeStore", "readwrite");
+      var objectStore = transaction.objectStore("employeeStore");
+      var cursor = objectStore.openCursor();
+
+      cursor.addEventListener("success", function (evt) {
+        var thisCursor = evt.target.result;
+  
+        if (thisCursor) {
+          console.log("Found items, do not populate");
+        }
+        //populate the database if there is no items in it
+        else {
+          console.log("No items, populate the database");
+
+          $.get("data.json", (data) => {
+            var transaction = db.transaction("employeeStore", "readwrite");
+            var objectStore = transaction.objectStore("employeeStore");
+            data.forEach((item) => {
+              let randomId = Math.round(Math.random() * 10000000);
+
+              objectStore.add({
+                id: randomId,
+                name: item.name,
+                area: item.area,
+                teams: item.teams,
+                organisationalskills: item.organisationalskills,
+                communication: item.communication,
+                availability: item.availability,
+                skills: item.skills,
+                phone: item.phone,
+                email: item.email,
+                image: item.image,
+                imageLarge: item.imageLarge,
+              });
+            });
+          });
+
+          
+          
+        }
+        
+      });
+
+      loadData();
+    };
+
+
+    populateData();
+    //get existing data
+    //var request = objectStore.get(321);
+
+    
+
+    
+
+    addData = () => {
+    var transaction = db.transaction("employeeStore", "readwrite");
+     var objectStore = transaction.objectStore("employeeStore");
+    //  var idInput = document.querySelector("#idInput");
+    //  var nameInput = document.querySelector("#nameInput");
+    var randomId = Math.round(Math.random() * 10000000);
+     var request = objectStore.add({
+      id: randomId,
+      name: 'employeeName',
+      area: 'employeeArea',
+      teams: 'employeeTeams',
+      organisationalskills: 'employeeOrganisationalskills',
+      communication: 'employeeCommunication',
+      availability: 'employeeaVailability',
+      skills: 'employeeSkills',
+      phone: 'employeePhone',
+      email: 'employeeEmail',
+      image: 'employeeImage',
+      imageLarge: 'employeeImageLarge',
+    });
+
+    request.addEventListener("success", function (evt) {
+      console.log("Request is successfull", evt.target.result);
+    });
+
+             
+
+   };
+   //addData();
+
   });
-
+  
   //when the db connection is unsuccessful
   conn.addEventListener("error", function (evt) {
     console.log("error connecting", evt.target.error);

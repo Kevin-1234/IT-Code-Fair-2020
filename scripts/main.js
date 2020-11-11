@@ -7,6 +7,15 @@ $(document).ready(function () {
   $(".collapsible").collapsible();
 });
 
+
+
+
+
+
+
+
+
+
 // initialize position of each component
 $(".home").animate({ left: "0px" });
 $(".searchResults").animate({ left: windowWidth });
@@ -675,7 +684,38 @@ $(".registerBtn").click(() => {
 
   $(".registerEmployeeStack").css({ "z-index": "2", display: "block" });
   $(".searchEmployeesStack").css({ "z-index": "1", display: "none" });
-  $(".savedEmployeesStack").css({ "z-index": "1", display: "none" });   
+  $(".savedEmployeesStack").css({ "z-index": "1", display: "none" }); 
+  
+  
+  $(".registerSubmitBtn").click( (evt) => {
+    evt.preventDefault();
+    var firstName = $("#first_name").val();
+    var lastName = $("#last_name").val();
+    var email = $("#email").val();
+    var mobilephone = $("#mobile_phone").val();
+    var area = $(".registerArea").val(); 
+    var nTWW = $('.registerNTWW').val();
+    var availability = $('.registerAvailability').val();
+    //var skills = $('.chips-autocomplete .chip').html();
+    //var skills = $('.chips-autocomplete').chips('selectChip', 0);
+ 
+
+
+  console.log("firstName: " + firstName);
+  console.log("lastName: " + lastName);
+  console.log("mobilephone: " + mobilephone);
+  console.log("area: " + area);
+  console.log("email: " + email);
+  console.log("nTWW: " + nTWW);
+ 
+  console.log("availability: " + availability);
+  //console.log("skills: " + skills.tag);
+
+  })
+
+  
+ 
+
 
 });
 
@@ -839,7 +879,33 @@ if ("indexedDB" in window) {
     // var saveButton = document.querySelector("#saveBtn");
     // var loadButton = document.querySelector("#loadBtn");
 
+    addData = () => {
+      var transaction = db.transaction("employeeStore", "readwrite");
+       var objectStore = transaction.objectStore("employeeStore");
+      //  var idInput = document.querySelector("#idInput");
+      //  var nameInput = document.querySelector("#nameInput");
+      var randomId = Math.round(Math.random() * 10000000);
+       var request = objectStore.add({
+        id: randomId,
+        name: 'employeeName',
+        area: 'employeeArea',
+        teams: 'employeeTeams',
+        organisationalskills: 'employeeOrganisationalskills',
+        communication: 'employeeCommunication',
+        availability: 'employeeaVailability',
+        skills: 'employeeSkills',
+        phone: 'employeePhone',
+        email: 'employeeEmail',
+        image: 'employeeImage',
+        imageLarge: 'employeeImageLarge',
+      });
+  
+      request.addEventListener("success", function (evt) {
+        console.log("Request is successfull", evt.target.result);
+      });
+     };
 
+     
     loadData = () => {
       
       var transaction = db.transaction("employeeStore", "readwrite");
@@ -875,11 +941,19 @@ if ("indexedDB" in window) {
           });
           console.log(dataObject);
 
-          $(document).ready(function(){
-            $('input.autocomplete').autocomplete({
-              data: dataObject
-            });
+          $('.chips-autocomplete').chips({
+            autocompleteOptions: {
+              data: dataObject,
+              limit: Infinity,
+              minLength: 1,
+            
+            }
           });
+
+         
+
+          
+         
           $("#searchBtn").click((evt) => {
             evt.preventDefault();
             console.log("data: " + data);
@@ -1393,34 +1467,7 @@ if ("indexedDB" in window) {
 
     
 
-    addData = () => {
-    var transaction = db.transaction("employeeStore", "readwrite");
-     var objectStore = transaction.objectStore("employeeStore");
-    //  var idInput = document.querySelector("#idInput");
-    //  var nameInput = document.querySelector("#nameInput");
-    var randomId = Math.round(Math.random() * 10000000);
-     var request = objectStore.add({
-      id: randomId,
-      name: 'employeeName',
-      area: 'employeeArea',
-      teams: 'employeeTeams',
-      organisationalskills: 'employeeOrganisationalskills',
-      communication: 'employeeCommunication',
-      availability: 'employeeaVailability',
-      skills: 'employeeSkills',
-      phone: 'employeePhone',
-      email: 'employeeEmail',
-      image: 'employeeImage',
-      imageLarge: 'employeeImageLarge',
-    });
-
-    request.addEventListener("success", function (evt) {
-      console.log("Request is successfull", evt.target.result);
-    });
-
-             
-
-   };
+    
    //addData();
 
   });

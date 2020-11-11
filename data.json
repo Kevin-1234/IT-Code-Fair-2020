@@ -291,7 +291,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "marketing",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -299,7 +299,7 @@
     "level": "1st",
     "communication": ["ms teams", "face-to-face", "phone call", "e-mail"],
     "availability": ["morning","day"],
-    "skills": ["social", "advertising", "marketinganalytics"],
+    "skills": ["social", "python", "html"],
     "phone": "0123456789",
     "email": "email@email.com",
     "image": "https://i.pravatar.cc/72?img=21",
@@ -307,7 +307,7 @@
   },
   {
     "name": "John Silver",
-    "area": "marketing",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -323,7 +323,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "marketing",
+    "area": "it",
     "teams": "5 - 10",
     "organisationalskills": ["time-management", "delegating", "goal-setting"],
     "expertise": ["intermediate"],
@@ -339,7 +339,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "marketing",
+    "area": "it",
     "teams": "10+",
     "organisationalskills": ["motivating", "delegating", "goal-setting"],
     "expertise": ["expert"],
@@ -355,7 +355,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "marketing",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -371,7 +371,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "marketing",
+    "area": "it",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management"],
     "expertise": ["expert"],
@@ -387,7 +387,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "finance",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -403,7 +403,7 @@
   },
   {
     "name": "John Silver",
-    "area": "finance",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -419,7 +419,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "finance",
+    "area": "it",
     "teams": "5 - 10",
     "organisationalskills": ["time-management", "delegating"],
     "expertise": ["intermediate"],
@@ -435,7 +435,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "finance",
+    "area": "it",
     "teams": "10+",
     "organisationalskills": ["motivating", "delegating", "conflict-management"],
     "expertise": ["expert"],
@@ -451,7 +451,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "finance",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["expert"],
@@ -467,7 +467,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "finance",
+    "area": "it",
     "teams": "10+",
     "organisationalskills": ["goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -483,7 +483,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "management",
+    "area": "engineering",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -499,7 +499,7 @@
   },
   {
     "name": "John Silver",
-    "area": "management",
+    "area": "engineering",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -515,7 +515,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "management",
+    "area": "engineering",
     "teams": "5 - 10",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["intermediate"],
@@ -531,7 +531,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "management",
+    "area": "engineering",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management", "goal-setting"],
     "expertise": ["expert"],
@@ -547,7 +547,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "management",
+    "area": "engineering",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating", "time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["expert"],
@@ -563,7 +563,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "management",
+    "area": "engineering",
     "teams": "10+",
     "organisationalskills": ["goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -675,7 +675,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "medicine",
+    "area": "engineering",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -691,7 +691,7 @@
   },
   {
     "name": "John Silver",
-    "area": "medicine",
+    "area": "engineering",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["beginner"],
@@ -707,7 +707,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "medicine",
+    "area": "engineering",
     "teams": "5 - 10",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["intermediate"],
@@ -723,7 +723,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "medicine",
+    "area": "engineering",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management", "goal-setting"],
     "expertise": ["intermediate"],
@@ -739,7 +739,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "medicine",
+    "area": "engineering",
     "teams": "0 - 5",
     "organisationalskills": ["motivating", "delegating", "conflict-management"],
     "expertise": ["expert"],
@@ -755,7 +755,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "medicine",
+    "area": "engineering",
     "teams": "10+",
     "organisationalskills": ["goal-setting", "conflict-management"],
     "expertise": ["expert"],
@@ -962,7 +962,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "architecture",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["intermediate"],
@@ -978,7 +978,7 @@
   },
   {
     "name": "John Silver",
-    "area": "architecture",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["expert"],
@@ -994,7 +994,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "architecture",
+    "area": "environment",
     "teams": "5 - 10",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["intermediate"],
@@ -1010,7 +1010,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "architecture",
+    "area": "environment",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management", "goal-setting"],
     "expertise": ["expert"],
@@ -1026,7 +1026,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "architecture",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["motivating", "delegating", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1042,7 +1042,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "architecture",
+    "area": "environment",
     "teams": "10+",
     "organisationalskills": ["goal-setting", "conflict-management"],
     "expertise": ["expert"],
@@ -1058,7 +1058,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "crm",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -1074,7 +1074,7 @@
   },
   {
     "name": "John Silver",
-    "area": "crm",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1090,7 +1090,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "crm",
+    "area": "environment",
     "teams": "5 - 10",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["intermediate"],
@@ -1106,7 +1106,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "crm",
+    "area": "environment",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management", "goal-setting"],
     "expertise": ["expert"],
@@ -1122,7 +1122,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "crm",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["motivating", "delegating", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1138,7 +1138,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "crm",
+    "area": "environment",
     "teams": "10+",
     "organisationalskills": ["motivating", "time-management"],
     "expertise": ["intermediate"],
@@ -1154,7 +1154,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "physics",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -1170,7 +1170,7 @@
   },
   {
     "name": "John Silver",
-    "area": "physics",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1186,7 +1186,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "physics",
+    "area": "environment",
     "teams": "5 - 10",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["expert"],
@@ -1202,7 +1202,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "physics",
+    "area": "environment",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management", "goal-setting"],
     "expertise": ["intermediate"],
@@ -1218,7 +1218,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "physics",
+    "area": "environment",
     "teams": "0 - 5",
     "organisationalskills": ["motivating", "delegating", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1234,7 +1234,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "physics",
+    "area": "environment",
     "teams": "10+",
     "organisationalskills": ["motivating", "time-management", "delegating"],
     "expertise": ["intermediate"],
@@ -1250,7 +1250,7 @@
   },
   {
     "name":"Brad Smith",
-    "area": "arts",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["leadership","motivating"],
     "expertise": ["beginner"],
@@ -1266,7 +1266,7 @@
   },
   {
     "name": "John Silver",
-    "area": "arts",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["time-management", "delegating", "goal-setting", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1282,7 +1282,7 @@
   },
   {
     "name": "Sara Buffer",
-    "area": "arts",
+    "area": "it",
     "teams": "5 - 10",
     "organisationalskills": ["motivating", "time-management", "delegating", "goal-setting"],
     "expertise": ["intermediate"],
@@ -1297,7 +1297,7 @@
   },
   {
     "name": "Jones Gilligan",
-    "area": "arts",
+    "area": "it",
     "teams": "10+",
     "organisationalskills": ["leadership", "time-management", "goal-setting"],
     "expertise": ["expert"],
@@ -1313,7 +1313,7 @@
   },
   {
     "name": "Helmut Wilhelm",
-    "area": "arts",
+    "area": "it",
     "teams": "0 - 5",
     "organisationalskills": ["motivating", "delegating", "conflict-management"],
     "expertise": ["intermediate"],
@@ -1329,7 +1329,7 @@
   },
   {
     "name": "Jose Santana",
-    "area": "arts",
+    "area": "it",
     "teams": "10+",
     "organisationalskills": ["goal-setting", "conflict-management"],
     "expertise": ["expert"],

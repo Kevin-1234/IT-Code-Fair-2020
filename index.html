@@ -325,15 +325,14 @@
         <div class="registration">
           <div class="registerEmployeeStackHeader">
             <span class="material-icons backWard">
-              arrow_back_ios
             </span>
             <h6 class="registerHeaderTitle">
               Registration
             </h6>  
           </div>
           <div class="container">
-            <div class="row">
-              <form class="col s12">
+            
+              <form class="col s12 registerForm">
   
   
                 <div class="row">
@@ -390,22 +389,23 @@
                 </div>
                 
 
-                
-                <div class="input-field col s12">
-                  <select multiple class="registerAvailability">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="morning">Morning</option>
-                    <option value="day">Day</option>
-                    <option value="evening">Evening</option>
-                  </select>
-                  <label>Availability</label>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <select multiple class="registerAvailability">
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="morning">Morning</option>
+                      <option value="day">Day</option>
+                      <option value="evening">Evening</option>
+                    </select>
+                    <label>Availability</label>
+                  </div>
                 </div>
+                
                 
                 <div class="row">
                   <div class="input-field col s12">
-                     
+                    <label for="chips-autocomplete" >Skills</label>
                     <div class="chips chips-autocomplete"></div>
-                    <label for="chips-autocomplete">Skills</label>
                   </div>
                 </div>
 
@@ -425,7 +425,7 @@
                 </button>
   
               </form>
-            </div>
+            
           </div>
           
           

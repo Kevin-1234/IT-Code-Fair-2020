@@ -311,15 +311,25 @@ $(".collectionBtn").click(() => {
         `<img src="${person.imageLarge}" class="circle" style="height:50%; width: 50%;">
   <h6 style="font-weight: 900;">${person.name}</h6>`
       );
+      if(person.area === 'it'){
+
+        person.area = person.area.toUpperCase();
+
+      }
       $(".savedProfileBody").append(
-        `<p>Area: ${person.area}</p>
-    <p>Teams: ${person.teams}</p>
-    <p>Organisationalskills: ${person.organisationalskills}</p>
-    <p>Communication: ${person.communication}</p>
-    <p>Skills: ${person.skills}</p>
-    <p>Phone: ${person.phone}</p>
-    <p>Email: ${person.email}</p>
-    <a class="waves-effect waves-light btn-small red darken-4 savedMoreInfoRemoveBtn"><i class="material-icons left">person_remove</i>Remove</a>`
+        `<p style="font-size:15px; color:#1565c0;">Area: <span style="font-size:14px; font-weight:600; color:#1a1919;">${person.area}</span></p>
+        <p style="font-size:15px; color:#1565c0;">Teams: <span style="font-size:14px; font-weight:600;color:#1a1919;">${person.teams}</span></p>
+        <p style="font-size:15px;color:#1565c0;">Organisational Skills:</p>
+        <p style="font-size:14px; font-weight:600;">${person.organisationalskills}</p>
+        <p style="font-size:15px;color:#1565c0;">Communication:</p>
+        <p style="font-size:14px; font-weight:600;">${person.communication}</p>
+        <p style="font-size:15px;color:#1565c0;">Skills:</p>
+        <p style="font-size:14px; font-weight:600;">${person.skills}</p>
+        <p style="font-size:15px; color:#1565c0;">Phone: <span style="font-size:14px; font-weight:600; color:#1a1919;">${person.phone}</span></p>
+        <p style="font-size:15px; color:#1565c0;">Email: <span style="font-size:14px; font-weight:600; color:#1a1919;">${person.email}</span></p>
+        <p style="font-size:15px; color:#1565c0;">Availability: <span style="font-size:14px; font-weight:600; color:#1a1919;">${person.availability}</span></p>
+        <a class="waves-effect waves-light btn-small red darken-4 savedMoreInfoRemoveBtn"><i class="material-icons left">person_remove</i>Remove</a>`
+
       );
 
       $(".savedMoreInfoRemoveBtn").click(() => {
@@ -726,9 +736,10 @@ if ("indexedDB" in window) {
               let email = "";
               let area = "";
               let teams = "";
-              let organisationalskills = [];
+              let organisationalSkills = [];
               let skills = [];
               let communication = [];
+              let availability = [];
         
               let personIndex = -1;
               let individualTages = [];
@@ -754,14 +765,16 @@ if ("indexedDB" in window) {
                   area = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].area;
                   teams =
                     availabilityFilteredData[mRsAndITagsWithIndexes[x].index].teams;
-                  organisationalskills =
+                  organisationalSkills =
                     availabilityFilteredData[mRsAndITagsWithIndexes[x].index]
                       .organisationalskills;
+                      
                   skills =
                     availabilityFilteredData[mRsAndITagsWithIndexes[x].index].skills;
                   communication =
                     availabilityFilteredData[mRsAndITagsWithIndexes[x].index]
                       .communication;
+                  availability = availabilityFilteredData[mRsAndITagsWithIndexes[x].index].availability;
         
                   individualTages = mRsAndITagsWithIndexes[x].individualTages;
                   matchRate = mRsAndITagsWithIndexes[x].matchRate;
@@ -779,7 +792,7 @@ if ("indexedDB" in window) {
                 align-items:center;
                 display: flex;
                 justify-content: space-between;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 900;">
                   <img src=${image} alt="" class="circle" style="height:42px; width: 42px;">
                   <div class="valign-wrapper">${personName}</div> 
@@ -851,7 +864,9 @@ if ("indexedDB" in window) {
                 $("head").append(
                   `<style class="matchRateKeyFrames${personIndex}"></style>`
                 );
+               
                 $(`.saveBtn${personIndex}`).click(() => {
+                  
                   let personToSave = {
                     name: personName,
                     area: area,
@@ -912,14 +927,21 @@ if ("indexedDB" in window) {
                   `<img src="${imageLarge}" class="circle" style="height:50%; width: 50%;">
                   <h6 style="font-weight: 900;">${personName}</h6>`
                 );
+                if(area === 'it'){
+                  area = area.toUpperCase();
+                }
                 $(".profileBody").append(
-                  `<p>Area: ${area}</p>
-                    <p>Teams: ${teams}</p>
-                    <p>Organisationalskills: ${organisationalskills}</p>
-                    <p>Communication: ${communication}</p>
-                    <p>Skills: ${skills}</p>
-                    <p>Phone: ${phone}</p>
-                    <p>Email: ${email}</p>
+                  `<p style="font-size:15px; color:#1565c0;">Area: <span style="font-size:14px; font-weight:600; color:#1a1919;">${area}</span></p>
+                    <p style="font-size:15px; color:#1565c0;">Teams: <span style="font-size:14px; font-weight:600;color:#1a1919;">${teams}</span></p>
+                    <p style="font-size:15px;color:#1565c0;">Organisational Skills:</p>
+                    <p style="font-size:14px; font-weight:600;">${organisationalSkills}</p>
+                    <p style="font-size:15px;color:#1565c0;">Communication:</p>
+                    <p style="font-size:14px; font-weight:600;">${communication}</p>
+                    <p style="font-size:15px;color:#1565c0;">Skills:</p>
+                    <p style="font-size:14px; font-weight:600;">${skills}</p>
+                    <p style="font-size:15px; color:#1565c0;">Phone: <span style="font-size:14px; font-weight:600; color:#1a1919;">${phone}</span></p>
+                    <p style="font-size:15px; color:#1565c0;">Email: <span style="font-size:14px; font-weight:600; color:#1a1919;">${email}</span></p>
+                    <p style="font-size:15px; color:#1565c0;">Availability: <span style="font-size:14px; font-weight:600; color:#1a1919;">${availability}</span></p>
                     <a class="waves-effect waves-light btn-small light-blue darken-2 moreInfoSaveBtn"><i class="material-icons left">person_add_alt_1</i>Save</a>`
                 );
         
@@ -1102,7 +1124,7 @@ function animateMatchRate(
   if (rAndG > 255) {
     g = 255;
     r = r - (rAndG - 255);
-  }else if(rAndG < 255){
+  }else if(rAndG <= 255){
     g = rAndG;
   }
 

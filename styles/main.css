@@ -7,13 +7,14 @@
 
   :root {
     background-color:  #faf9f9;
+    color: #1a1919;
     font-family: 'Helvetica';
     font-size: 16px;  
   }
 
 
   body{
-    background-color: rgb(4, 42, 85); 
+    background-color:  rgb(4, 42, 85); 
   } 
 
  
@@ -86,6 +87,24 @@
 .collapsible-body p{
 
   margin:0;
+}
+
+
+.moreInfo .profileHeader{
+  width:100%; 
+  display: flex; 
+  margin-top: 28px; 
+  justify-content: center; 
+  flex-direction: column; 
+  align-items: center;
+
+}
+.moreInfo .profileBody{
+  margin: 5%; 
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 15px;
+
 }
 
 

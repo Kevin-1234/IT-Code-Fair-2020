@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 
 // initialize position of each component
-$(".home").animate({ left: "0px" });
+$(".searchEmployee").animate({ left: "0px" });
 $(".searchResults").animate({ left: windowWidth });
 $(".moreInfo").animate({ left: windowWidth });
 
@@ -23,141 +23,10 @@ $(".employeeSearchBtn img:first").attr(
 );
 
 $(".searchEmployeesStackHeader").append(
-  `<h6 class="screenTitle">Select Area</h6>`
+  `<h6 class="screenTitle">Search Employee</h6>`
 );
-// show different set of skills based on the discipline selected
-$("select").on("change", function (e) {
-  $(".skills").empty();
-  if (e.target.value === "IT") {
-    $(".disciplines").append(`<div class="skills" style="margin-top: 50px;">
-      <label style="font-size: 18px; font-weight: 600;">Skills</label>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Python" class="filled-in"  />
-          <span>Python</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="JavaScript" class="filled-in"  />
-          <span>JavaScript</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="Network Engineering" class="filled-in"  />
-          <span>Network Engineering</span>
-        </label>
-      </p>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="C" class="filled-in"  />
-          <span>C</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Cyber Security" class="filled-in"  />
-          <span>Cyber Security</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="SQL" class="filled-in"  />
-          <span>SQL</span>
-        </label>
-      </p>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="UX Design" class="filled-in"  />
-          <span>UX Design</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox"  name="skills" value="AI" class="filled-in"  />
-          <span>AI</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="Neural Networks" class="filled-in"  />
-          <span>Neural Networks</span>
-        </label>
-      </p>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Blockchain" class="filled-in"  />
-          <span>Blockchain</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="R" class="filled-in"  />
-          <span>R</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="HTML" class="filled-in"  />
-          <span>HTML</span>
-        </label>
-      </p>
-    </div>`);
-    $(".skills").hide().fadeIn();
-  } else if (e.target.value === "Engineering") {
-    $(".disciplines").append(`<div class="skills"  margin-top: 50px; ">
-      <label style="font-size: 18px; font-weight: 600;">Skills</label>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Electrical Engineering" class="filled-in"  />
-          <span>Electrical Engineering</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Chemical Engineering" class="filled-in"  />
-          <span>Chemical Engineering</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="Steel Engineering" class="filled-in"  />
-          <span>Steel Engineering</span>
-        </label>
-      </p>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Statics" class="filled-in"  />
-          <span>Statics</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Concrete Structures" class="filled-in"  />
-          <span>Concrete Structures</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="Mechanical Engineering" class="filled-in"  />
-          <span>Mechanical Engineering</span>
-        </label>
-      </p>
-      
-    </div>`);
-    $(".skills").hide().fadeIn();
-  } else if (e.target.value === "Environment") {
-    $(".disciplines").append(`<div class="skills" style="margin-top: 50px;">
-      <label style="font-size: 18px; font-weight: 600;">Skills</label>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Turtles" class="filled-in"  />
-          <span>Turtles</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Ecosystems" class="filled-in"  />
-          <span>Ecosystems</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="Microbiology" class="filled-in"  />
-          <span>Microbiology</span>
-        </label>
-      </p>
-      <p>
-        <label style="margin-right: 8px;">
-          <input type="checkbox"  name="skills" value="Spatial Data" class="filled-in"  />
-          <span>Spatial Data</span>
-        </label>
-        <label style="margin-right: 8px;">
-          <input type="checkbox" name="skills" value="Conservation" class="filled-in"  />
-          <span>Conservation</span>
-        </label style="margin-right: 8px;">
-        <label>
-          <input type="checkbox" name="skills" value="Fire Ecology" class="filled-in"  />
-          <span>Fire Ecology</span>
-        </label>
-      </p>  
-    </div>`);
-    $(".skills").hide().fadeIn();
-  }
-});
+
+
 
 
 
@@ -166,14 +35,17 @@ $(".searchEmployeesStackHeader .backWard").click((evt) => {
   evt.preventDefault();
   let screenTitle = document.querySelectorAll(".screenTitle");
 
-  console.log("screenTitle:" + screenTitle[0].innerHTML);
+  //If the current screen is "Search Results" screen, switch screen title and slide back to "Search Employee" screen
   if (screenTitle[0].innerHTML === "Search Results") {
+    //switch title
     $(".searchEmployeesStackHeader h6").remove(".screenTitle");
     $(".searchEmployeesStackHeader").append(
-      `<h6 class="screenTitle">Select Area</h6>`
+      `<h6 class="screenTitle">Search Employee</h6>`
     );
-    $(".home").show();
-    $(".home").animate({ left: 0 }, 250);
+
+    //slide back to "Search Employee" screen 
+    $(".searchEmployee").show();
+    $(".searchEmployee").animate({ left: 0 }, 250);
     $(".searchResults").animate({ left: windowWidth }, 300, () => {
       $(".selectedTags").remove();
       $(".resultsList").empty();
@@ -184,8 +56,7 @@ $(".searchEmployeesStackHeader .backWard").click((evt) => {
     $(".searchEmployeesStackHeader").append(
       `<h6 class="screenTitle">Search Results</h6>`
     );
-    // $(".searchResults").css("z-index", '1');
-    // $(".moreInfo").css("z-index", '0');
+  
     $(".searchResults").show();
     $(".searchResults").animate({ left: 0 }, 250);
 
@@ -242,7 +113,7 @@ $(".employeeSearchBtn").click(() => {
   $(".searchEmployeesStack").css({ "z-index": "2", display: "block" });
   $(".savedEmployeesStack").css({ "z-index": "1", display: "none" });
   $(".registerEmployeeStack").css({ "z-index": "1", display: "none" });
-  //$('.home').show();
+  //$('.searchEmployee').show();
   //$('.searchResults').css({ 'z-index':'2'});
   //$('.searchResults').show()
   //$('.moreInfo').css({ 'z-index':'2'}).show();
@@ -274,7 +145,7 @@ $(".collectionBtn").click(() => {
   $(".registerEmployeeStack").css({ "z-index": "1", display: "none" });
   // $('.savedEmployees').css({'z-index':'2','display':'block'});
   // $('.savedMoreInfo').css({'z-index':'2'});
-  // $('.home').css({ 'z-index':'1'});
+  // $('.searchEmployee').css({ 'z-index':'1'});
   // $('.searchResults').css({ 'z-index':'1'});
   // $('.moreInfo').css({'z-index':'1'});
 
@@ -989,9 +860,9 @@ if ("indexedDB" in window) {
             `<h6 class="screenTitle">Search Results</h6>`
           );
           $(".searchResults").show();
-          $(".home").animate({ left: 0 - windowWidth }, 300);
+          $(".searchEmployee").animate({ left: 0 - windowWidth }, 300);
           $(".searchResults").animate({ left: 0 }, 250, () => {
-            $(".home").hide();
+            $(".searchEmployee").hide();
             $(".searchForm")[0].reset();
           });
 
@@ -1094,6 +965,142 @@ if ("indexedDB" in window) {
     });
   });
 }
+
+// show different set of skills based on the discipline selected
+$("select").on("change", function (e) {
+  $(".skills").empty();
+  if (e.target.value === "IT") {
+    $(".disciplines").append(`<div class="skills" style="margin-top: 50px;">
+      <label style="font-size: 18px; font-weight: 600;">Skills</label>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Python" class="filled-in"  />
+          <span>Python</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="JavaScript" class="filled-in"  />
+          <span>JavaScript</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="Network Engineering" class="filled-in"  />
+          <span>Network Engineering</span>
+        </label>
+      </p>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="C" class="filled-in"  />
+          <span>C</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Cyber Security" class="filled-in"  />
+          <span>Cyber Security</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="SQL" class="filled-in"  />
+          <span>SQL</span>
+        </label>
+      </p>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="UX Design" class="filled-in"  />
+          <span>UX Design</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox"  name="skills" value="AI" class="filled-in"  />
+          <span>AI</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="Neural Networks" class="filled-in"  />
+          <span>Neural Networks</span>
+        </label>
+      </p>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Blockchain" class="filled-in"  />
+          <span>Blockchain</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="R" class="filled-in"  />
+          <span>R</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="HTML" class="filled-in"  />
+          <span>HTML</span>
+        </label>
+      </p>
+    </div>`);
+    $(".skills").hide().fadeIn();
+  } else if (e.target.value === "Engineering") {
+    $(".disciplines").append(`<div class="skills"  margin-top: 50px; ">
+      <label style="font-size: 18px; font-weight: 600;">Skills</label>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Electrical Engineering" class="filled-in"  />
+          <span>Electrical Engineering</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Chemical Engineering" class="filled-in"  />
+          <span>Chemical Engineering</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="Steel Engineering" class="filled-in"  />
+          <span>Steel Engineering</span>
+        </label>
+      </p>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Statics" class="filled-in"  />
+          <span>Statics</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Concrete Structures" class="filled-in"  />
+          <span>Concrete Structures</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="Mechanical Engineering" class="filled-in"  />
+          <span>Mechanical Engineering</span>
+        </label>
+      </p>
+      
+    </div>`);
+    $(".skills").hide().fadeIn();
+  } else if (e.target.value === "Environment") {
+    $(".disciplines").append(`<div class="skills" style="margin-top: 50px;">
+      <label style="font-size: 18px; font-weight: 600;">Skills</label>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Turtles" class="filled-in"  />
+          <span>Turtles</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Ecosystems" class="filled-in"  />
+          <span>Ecosystems</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="Microbiology" class="filled-in"  />
+          <span>Microbiology</span>
+        </label>
+      </p>
+      <p>
+        <label style="margin-right: 8px;">
+          <input type="checkbox"  name="skills" value="Spatial Data" class="filled-in"  />
+          <span>Spatial Data</span>
+        </label>
+        <label style="margin-right: 8px;">
+          <input type="checkbox" name="skills" value="Conservation" class="filled-in"  />
+          <span>Conservation</span>
+        </label style="margin-right: 8px;">
+        <label>
+          <input type="checkbox" name="skills" value="Fire Ecology" class="filled-in"  />
+          <span>Fire Ecology</span>
+        </label>
+      </p>  
+    </div>`);
+    $(".skills").hide().fadeIn();
+  }
+});
+
+
 
 function animateMatchRate(
   element,

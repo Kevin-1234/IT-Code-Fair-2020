@@ -4,7 +4,7 @@
 // when assets get updated, cache should also be updated
 // update cache name when updating the cache
 // notice if any of the items' url in the assets goes wrone, caching will be unsuccessful 
-const staticCacheName = 'site-static-v1.0';
+const staticCacheName = 'site-static-v2.0';
 // a list of references for assets that need to be added in to the cache
 
 // local version
@@ -99,15 +99,15 @@ self.addEventListener('activate', evt => {
   });
 
 // fetch event
-// self.addEventListener('fetch', evt => {
+self.addEventListener('fetch', evt => {
     
-//     evt.respondWith(
-//        // if the fetch requested item matches an item in the cache 
-//       caches.match(evt.request)
-//         // if the item is not in the cache, return the original fetch request
-//         .then(cacheRes => {
-//             return cacheRes || fetch(evt.request);
-//         })
-//     );
-//   });    
+    evt.respondWith(
+       // if the fetch requested item matches an item in the cache 
+      caches.match(evt.request)
+        // if the item is not in the cache, return the original fetch request
+        .then(cacheRes => {
+            return cacheRes || fetch(evt.request);
+        })
+    );
+  });    
 

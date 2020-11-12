@@ -99,15 +99,15 @@ self.addEventListener('activate', evt => {
   });
 
 // fetch event
-self.addEventListener('fetch', evt => {
+// self.addEventListener('fetch', evt => {
     
-    evt.respondWith(
-       // if the fetch requested item matches an item in the cache 
-      caches.match(evt.request)
-        // if the item is not in the cache, return the original fetch request
-        .then(cacheRes => {
-            return cacheRes || fetch(evt.request);
-        })
-    );
-  });    
+//     evt.respondWith(
+//        // if the fetch requested item matches an item in the cache 
+//       caches.match(evt.request)
+//         // if the item is not in the cache, return the original fetch request
+//         .then(cacheRes => {
+//             return cacheRes || fetch(evt.request);
+//         })
+//     );
+//   });    
 

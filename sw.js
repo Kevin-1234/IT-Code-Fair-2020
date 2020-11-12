@@ -4,7 +4,7 @@
 // when assets get updated, cache should also be updated
 // update cache name when updating the cache
 // notice if any of the items' url in the assets goes wrone, caching will be unsuccessful 
-const staticCacheName = 'site-static-v1.0';
+const staticCacheName = 'site-static-v1.1';
 // a list of references for assets that need to be added in to the cache
 
 // local version
@@ -47,21 +47,21 @@ const staticCacheName = 'site-static-v1.0';
 //github version
 const assets = [
   '/IT-Code-Fair-2020/',
-  'IT-Code-Fair-2020/index.html',
-  'IT-Code-Fair-2020/scripts/app.js',
-  'IT-Code-Fair-2020/scripts/main.js',
-  'IT-Code-Fair-2020/scripts/vendor/materialize.min.js',
-  'IT-Code-Fair-2020/scripts/vendor/jquery-3.5.1.min.js',
-  'IT-Code-Fair-2020/styles/main.css',
-  'IT-Code-Fair-2020/styles/vendor/materialize.css',
-  'IT-Code-Fair-2020/styles/vendor/materialize.min.css',
-  'IT-Code-Fair-2020/styles/vendor/materialIcons.css',
-  'IT-Code-Fair-2020/assets/images/AppIcons/outline_person_search_black_24dp.png',
-  'IT-Code-Fair-2020/assets/images/AppIcons/baseline_person_search_black_24dp.png',
-  'IT-Code-Fair-2020/assets/images/AppIcons/outline_group_add_black_24dp.png',
-  'IT-Code-Fair-2020/assets/images/AppIcons/baseline_group_add_black_24dp.png',
-  'IT-Code-Fair-2020/assets/images/AppIcons/round_star_border_black_24dp.png',
-  'IT-Code-Fair-2020/assets/images/AppIcons/round_star_black_24dp.png',
+  'index.html',
+  'scripts/app.js',
+  'scripts/main.js',
+  'scripts/vendor/materialize.min.js',
+  'scripts/vendor/jquery-3.5.1.min.js',
+  'styles/main.css',
+  'styles/vendor/materialize.css',
+  'styles/vendor/materialize.min.css',
+  'styles/vendor/materialIcons.css',
+  'assets/images/AppIcons/outline_person_search_black_24dp.png',
+  'assets/images/AppIcons/baseline_person_search_black_24dp.png',
+  'assets/images/AppIcons/outline_group_add_black_24dp.png',
+  'assets/images/AppIcons/baseline_group_add_black_24dp.png',
+  'assets/images/AppIcons/round_star_border_black_24dp.png',
+  'assets/images/AppIcons/round_star_black_24dp.png',
   'https://fonts.gstatic.com/s/materialicons/v67/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2'
 ];
 
